@@ -1,0 +1,72 @@
+import java.util.*;
+
+public class Grid {
+//  private Vector<LinkedList<String>> shipLocations;
+  private Hashtable<String, String> gridState;
+  private Hashtable<String, Boolean> locations; 
+  private Vector<Ship> ships;
+  
+  public Grid() {
+    gridState = new Hashtable<String, String>();
+    locations = new Hashtable<String, Boolean>();
+    ships = new Vector<Ship>();
+    
+    for (int i = 65; i < 75; i ++) {
+      for (int j = 1; j <11; j++) {
+        gridState.put((char)(i) + Integer.toString(j), "Empty");
+        locations.put((char)(i) + Integer.toString(j), false);
+      }
+    }
+    
+    int[] startCoord = {0,0};
+    ships.add(new Ship("Destroyer", "vertical", startCoord));
+    ships.add(new Ship("Submarine", "vertical", startCoord));
+    ships.add(new Ship("Cruiser", "vertical", startCoord));
+    ships.add(new Ship("Battleship", "vertical", startCoord));
+    ships.add(new Ship("Carrier", "vertical", startCoord));
+  }
+  
+  public void markMissile(String location) {
+    grid.put(location, true);
+  }
+  /*
+  public void placeDestroyer(String hole1, String hole2) {
+    shipLocations.get(0).add(0, hole1);
+    shipLocations.get(0).add(1, hole2);
+  }
+  
+  public void placeSubmarine (String hole1, String hole2, String hole3) {
+    shipLocations.get(1).add(0, hole1);
+    shipLocations.get(1).add(1, hole2);
+    shipLocations.get(1).add(2, hole3);
+  }
+  
+  public void placeDestoryer (String hole1, String hole2, String hole3) {
+    shipLocations.get(2).add(0, hole1);
+    shipLocations.get(2).add(1, hole2);
+    shipLocations.get(2).add(2, hole3);
+  }
+  
+  public void placeBattleship (String hole1, String hole2, String hole3, String hole4) {
+    shipLocations.get(3).add(0, hole1);
+    shipLocations.get(3).add(1, hole2);
+    shipLocations.get(3).add(2, hole3);
+    shipLocations.get(3).add(3, hole4);
+  }
+  
+  public void placeCarrier (String hole1, String hole2, String hole3, String hole4, String hole5) {
+    shipLocations.get(4).add(0, hole1);
+    shipLocations.get(4).add(1, hole2);
+    shipLocations.get(4).add(2, hole3);
+    shipLocations.get(4).add(3, hole4);
+    shipLocations.get(4).add(4, hole5);
+  }
+  
+  public static void main(String[] args) {
+    Grid grid = new Grid();
+    System.out.println(grid.grid.toString());
+    grid.markMissile("A1");
+    System.out.println(grid.grid.get("A1"));
+  }
+  */
+}

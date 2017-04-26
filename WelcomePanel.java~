@@ -1,0 +1,24 @@
+//********************************************************************
+// CS230 Final Project
+//
+// WelcomePage.java       CS230 Staff
+//
+//********************************************************************
+
+import javax.swing.*;
+import java.awt.*;
+
+public class WelcomePanel extends JPanel {
+  
+  public WelcomePanel() {
+    setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Sets panel layout to BoxLayout vertically
+    JButton start = new JButton("Start");
+    InputStream test = new FileInputStream("Game of Thrones.wav");
+  }
+
+  private class ButtonListener implements ActionListener {
+    public void actionPerformed (ActionEvent event) {
+      
+    }
+  }
+}

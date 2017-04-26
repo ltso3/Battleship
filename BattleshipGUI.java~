@@ -1,0 +1,25 @@
+//********************************************************************
+// CS230 Final Project
+//
+// WelcomePage.java       CS230 Staff
+//
+//********************************************************************
+
+import javax.swing.*;
+
+public class BattleshipGUI {
+   //-----------------------------------------------------------------
+   //  Creates and displays the main program frame.
+   //-----------------------------------------------------------------
+   public static void main (String[] args) {
+      JFrame frame = new JFrame ("Grad Schools"); // Create JFrame for overall structure of GUI
+      frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE); // Close GUI upon pressing x
+      
+      frame.add(new WelcomePage());
+                   
+      frame.getContentPane().add(tp);
+
+      frame.pack();
+      frame.setVisible(true);
+   }
+}

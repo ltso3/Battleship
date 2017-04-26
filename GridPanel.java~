@@ -1,0 +1,29 @@
+//********************************************************************
+// CS230 Final Project
+//
+// SetupPanel.java       CS230 Staff
+//
+//********************************************************************
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class GridPanel extends JPanel {
+  
+  public SetupPanel() {
+    setLayout(new GridLayout(11, 11)); // Sets panel layout to BoxLayout vertically
+    for(int i = 0; i < 12; i++) {
+      add(new JButton(""));
+    }
+  }
+
+  private class ButtonListener implements ActionListener {
+    public void actionPerformed (ActionEvent event) {
+      if(event.getSource() == start) {
+//        SetupPanel s = new SetupPanel();
+        
+      }
+    }
+  }
+}
