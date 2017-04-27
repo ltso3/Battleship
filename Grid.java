@@ -59,16 +59,16 @@ public class Grid {
       }
   }
   
-  public boolean markMissile(String location) {
-    // Still need method for if missile is shot at an out of bounds location
-    if(locations.get(location) == true) {
-      gridState.put(location, "HIT");
-      return true;
+  public void markMissile(String location) {
+    if (gridState.containsKey(location)) {
+	    if(locations.get(location) == true) {
+	      gridState.put(location, "HIT");
+	    }
+	    else {
+	      gridState.put(location, "MISS");
+	    }
     }
-    else {
-      gridState.put(location, "MISS");
-      return false;
-    }
+    System.out.println("The chosen location is invalid.");
   }
   
   public static void main(String[] args) {
@@ -87,6 +87,7 @@ public class Grid {
     
     grid.addShip(ship2);
     System.out.println("Checking if C3 has a ship: " + grid.locations.get("C3"));
+    grid.markMissile("Z5");
     /*System.out.println("Checking if D4 has a ship: " + grid.locations.get("D4"));
     grid.markMissile("A5");
     grid.markMissile("A4");
