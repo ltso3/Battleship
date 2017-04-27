@@ -11,7 +11,7 @@ import javax.swing.*;
 public class InstructionTab extends JPanel {
   public InstructionTab() {
     setBackground (Color.white);
-    setLayout(New FlowLayout()); 
+    setLayout(new FlowLayout()); 
     
     //BoxLayout panels within a FlowLayout panel to create a column effect
     JPanel left = new JPanel();
@@ -61,9 +61,9 @@ public class InstructionTab extends JPanel {
                             "the fewer shots you get.");
     JLabel l23 = new JLabel("A more challenging game can also be played where players do not disclose which "+
                             "ships are hit.");
-    
-    //add JLabels to panels
     add(title);
+    
+    //add JLabels to left panel
     left.add(l1);
     left.add(l2);
     left.add(l3);
@@ -80,12 +80,28 @@ public class InstructionTab extends JPanel {
     left.add(l14);
     left.add(l15);
     left.add(l16);
-    left.add(l7);
-    left.add(l8);
-    left.add(l9);
+    left.add(l17);
+    left.add(l18);
+    left.add(l19);
     left.add(l20);
     left.add(l21);
     left.add(l22);
     left.add(l23);
+    
+    //JLabels for right column 
+    JLabel r1 = new JLabel("FIGURE 1");
+    JLabel r2 = new JLabel("FIGURE 2");
+    JLabel r3 = new JLabel("FIGURE 3");
+    JLabel r4 = new JLabel("FIGURE 4");
+    JLabel r5 = new JLabel("FIGURE 5");
+    JLabel r6 = new JLabel("FIGURE 6");
+    
+    //add JLabels to right panel
+    right.add(r1);
+    right.add(r2);
+    right.add(r3);
+    right.add(r4);
+    right.add(r5);
+    right.add(r6);
   }
 }
