@@ -11,7 +11,7 @@ import javax.swing.*;
 public class InstructionTab extends JPanel {
   public InstructionTab() {
     setBackground (Color.white);
-    setLayout(new FlowLayout()); 
+    setLayout(new GridLayout(1,2)); 
     
     //BoxLayout panels within a FlowLayout panel to create a column effect
     JPanel left = new JPanel();
@@ -24,46 +24,54 @@ public class InstructionTab extends JPanel {
 
     //JLabel for the game title
     JLabel title = new JLabel("BATTLESHIP");
-    
+    title.setFont(new Font("Serif",Font.BOLD, 36));
+
     //JLabels for the left column 
     //Object, contents, game instructions, salvo version
     JLabel l1 = new JLabel("For 2 Players - Human vs Computer");
     JLabel l2 = new JLabel("OJBECT OF THE GAME");
+    l2.setFont(new Font("Serif",Font.BOLD, 26));
     JLabel l3 = new JLabel("Be the first to sink all 5 of your opponent's ships.");
     JLabel l4 = new JLabel("CONTENTS");
+    l4.setFont(new Font("Serif",Font.BOLD, 26));
     JLabel l5 = new JLabel("5 ships     white pegs     red pegs");
     JLabel l6 = new JLabel("     ocean grid     target grid");
     JLabel l7 = new JLabel("PREPARE FOR BATTLE");
+    l7.setFont(new Font("Serif",Font.BOLD, 26));
     JLabel l8 = new JLabel("Each player must place all of their ships on their ocean grid");
     JLabel l9 = new JLabel("Rules for placing ships:");
     JLabel l10 = new JLabel("   -Ships may be placed horizontally or vertically, but not diagonally.");
     JLabel l11 = new JLabel("   -Ships are not allowed to overlap in letters, numbers, or the edge of the grid.");
     JLabel l12 = new JLabel("   -Position of the ships cannot be changed once the game has begun.");
     JLabel l13 = new JLabel("HOW TO PLAY");
-    JLabel l14 = new JLabel("The human player will begin first. Then, the human and computer will alternate turns," + 
-                              "calling out one shot per turn to try and hit each other's ships.");
-    JLabel l15 = new JLabel("To begin each turn, a player must pick a location on their target grid. " +
-                            "It will either be a HIT or MISS depending on whether the chosen location " +
-                            "is occupied by a ship on the opponent's ocean grid. " +
+    l13.setFont(new Font("Serif",Font.BOLD, 26));
+    JLabel l14 = new JLabel("<html>The human player will begin first. Then, the human and computer will <br>alternate turns," + 
+                              " calling out one shot per turn to try and hit each other's ships.");
+    JLabel l15 = new JLabel("<html>To begin each turn, a player must pick a location on their target grid.<br>" +
+                            "It will either be a HIT or MISS depending on whether the chosen location<br>" +
+                            "is occupied by a ship on the opponent's ocean grid.<br>" +
                             "A HIT is recorded with a RED peg and a MISS is recorded with a WHITE peg.");
     JLabel l16 = new JLabel("Turns alternate with each shot called.");
     JLabel l17 = new JLabel("SINKING A SHIP");
-    JLabel l18 = new JLabel("Once all the locations in any one ship are hit, it has been sunk. The name" +
-                            " of the sunken ship is announced and is marked separately at the top of the" +
+    l17.setFont(new Font("Serif",Font.BOLD, 26));
+    JLabel l18 = new JLabel("<html>Once all the locations in any one ship are hit, it has been sunk. The name<br>" +
+                            " of the sunken ship is announced and is marked separately at the top of the<br>" +
                             " game screen.");
     JLabel l19 = new JLabel("WINNING THE GAME");
-    JLabel l20 = new JLabel("When a player sinks their opponent's entire fleet of five ships, they win the" +
+    l19.setFont(new Font("Serif",Font.BOLD, 26));
+    JLabel l20 = new JLabel("<html>When a player sinks their opponent's entire fleet of five ships, they win <br>the" +
                             " game! The player then has the option to play again or quit.");
     JLabel l21 = new JLabel("HOW TO PLAY SALVO");
-    JLabel l22 = new JLabel("In Salva mode, gameplay remains the same, but with on exception. Instead of "+
-                            "firing one missile at a time, the player can fire the same number of missiles "+
-                            "as the number of ships the opponent has remaining (i.e. the more ships sunk, " +
+    l21.setFont(new Font("Serif",Font.BOLD, 26));
+    JLabel l22 = new JLabel("<html>In Salvo mode, gameplay remains the same, but with on exception. Instead of <br>"+
+                            "firing one missile at a time, the player can fire the same number of missiles <br>"+
+                            "as the number of ships the opponent has remaining (i.e. the more ships sunk, <br>" +
                             "the fewer shots you get.");
-    JLabel l23 = new JLabel("A more challenging game can also be played where players do not disclose which "+
+    JLabel l23 = new JLabel("<html>A more challenging game can also be played where players do not disclose which <br>"+
                             "ships are hit.");
-    add(title);
     
     //add JLabels to left panel
+    left.add(title);
     left.add(l1);
     left.add(l2);
     left.add(l3);
