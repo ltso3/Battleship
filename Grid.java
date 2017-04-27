@@ -1,15 +1,13 @@
+//jakldfjadskl
 import java.util.*;
 
 public class Grid {
-  // private Vector<LinkedList<String>> shipLocations;
   private Hashtable<String, String> gridState;
   private Hashtable<String, Boolean> locations; 
-//  private Vector<Ship> ships;
   
   public Grid() {
     gridState = new Hashtable<String, String>();
     locations = new Hashtable<String, Boolean>();
-//    ships = new Vector<Ship>();
     
     for (int i = 65; i < 75; i ++) {
       for (int j = 1; j <11; j++) {
