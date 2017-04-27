@@ -2,16 +2,16 @@ import java.util.*;
 
 public class Grid {
   private Hashtable<String, String> targetGrid;
-  private Hashtable<String, Boolean> oceanGrid; 
+  private Hashtable<String, String> oceanGrid; 
   
   public Grid() {
     targetGrid = new Hashtable<String, String>();
-    oceanGrid = new Hashtable<String, Boolean>();
+    oceanGrid = new Hashtable<String, String>();
     
     for (int i = 65; i < 75; i ++) {
       for (int j = 1; j <11; j++) {
     	targetGrid.put((char)(i) + Integer.toString(j), "Empty");
-    	oceanGrid.put((char)(i) + Integer.toString(j), false);
+    	oceanGrid.put((char)(i) + Integer.toString(j), "Empty");
       }
     }
   }
@@ -27,16 +27,17 @@ public class Grid {
       // First for loop to ensure that ship does not already exist in locations
       for(int i = 0; i < ship.getLength(); i++) {
     	  String loc = (char)(startRow + i) + Character.toString(startCol);
-          if (oceanGrid.get(loc).equals(true)) {
+          if (oceanGrid.get(loc).equals("ship")) {
         	 System.out.println("There is already a ship in this location!"); 
         	 alreadyShip = true;
         	 break;
           }
       }
+      // Places ship in each space it fills
       for(int i = 0; i < ship.getLength(); i++) {
     	  if (!alreadyShip) {
     	  String loc = (char)(startRow + i) + Character.toString(startCol);
-    	  oceanGrid.put(loc, true);
+    	  oceanGrid.put(loc, "ship");
     	  }
       }
     }
@@ -44,7 +45,7 @@ public class Grid {
     else {
         for(int i = 0; i < ship.getLength(); i++) {
         	String loc = Character.toString(startRow) + (char)(startCol + i);
-            if (oceanGrid.get(loc).equals(true)) {
+            if (oceanGrid.get(loc).equals("ship")) {
           	 System.out.println("There is already a ship in this location!"); 
           	 alreadyShip = true;
           	 break;
@@ -53,19 +54,35 @@ public class Grid {
         for(int i = 0; i < ship.getLength(); i++) {
       	  if (!alreadyShip) {
       	  String loc = Character.toString(startRow) + (char)(startCol + i);
-      	  oceanGrid.put(loc, true);
+      	  oceanGrid.put(loc, "ship");
       	  }
         }
       }
   }
   
-  public void markHitMissile(String location) {
-	 targetGrid.put(location, "HIT");
+  // Marking places the player has hit
+  public void markTargetGrid(String location) {
+	  if (!oceanGrid.get(location).equals("ship"))
+		  targetGrid.put(location, "MISS");
+	  else
+		  targetGrid.put(location, "HIT");
   }
   
-  public void markMissMissile(String location) {
-	 targetGrid.put(location, "MISS");
-	  }
+  // Marking places the player has been hit
+  public void markOceanGrid(String location){
+	  if (!oceanGrid.get(location).equals("ship"))
+		  oceanGrid.put(location, "MISS");
+	  else
+		  oceanGrid.put(location, "HIT");
+  }
+  
+  public Hashtable<String, String> getTargetGrid() {
+	  return targetGrid;
+  }
+  
+  public Hashtable<String, String> getOceanGrid() {
+	  return oceanGrid;
+  }
   
   public static void main(String[] args) {
 	Grid grid = new Grid();
