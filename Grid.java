@@ -1,6 +1,3 @@
-// THIS is new
-// This is new
-
 import java.util.*;
 
 public class Grid {
@@ -10,13 +7,6 @@ public class Grid {
 //  private Vector<Ship> ships;
   
   public Grid() {
-    System.out.println("Test");
-    System.out.println("Test");
-    System.out.println("Test");
-    System.out.println("Test");
-    System.out.println("Test");
-    System.out.println("Test");
-    System.out.println("Test");
     gridState = new Hashtable<String, String>();
     locations = new Hashtable<String, Boolean>();
 //    ships = new Vector<Ship>();
@@ -51,7 +41,7 @@ public class Grid {
     
     else {
       for(int j = 0; j < ship.getLength(); j++) {
-        String loc = startRow + Integer.toString((int) (startCol + j);
+        String loc = startRow + Integer.toString((int) (startCol + j));
         locations.put(loc, true); 
       }
     }
