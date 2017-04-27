@@ -1,3 +1,6 @@
+// THIS is new
+// This is new
+
 import java.util.*;
 
 public class Grid {
@@ -7,6 +10,13 @@ public class Grid {
 //  private Vector<Ship> ships;
   
   public Grid() {
+    System.out.println("Test");
+    System.out.println("Test");
+    System.out.println("Test");
+    System.out.println("Test");
+    System.out.println("Test");
+    System.out.println("Test");
+    System.out.println("Test");
     gridState = new Hashtable<String, String>();
     locations = new Hashtable<String, Boolean>();
 //    ships = new Vector<Ship>();
