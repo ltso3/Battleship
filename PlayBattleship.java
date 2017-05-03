@@ -76,4 +76,18 @@ public class PlayBattleship {
 			}
 		return sunk;
 	}
+	
+	/**
+	 * Helper method determining whether a player has sunk all ships and won the game
+	 * @param grid Grid of opponent
+	 * @return true if all ships in opponent's grid are sunk, false otherwise
+	 */
+	private boolean allSunk(Grid grid) {
+		boolean won = true;
+		Vector<LinkedList<String>> ships = grid.getShips();
+		for (LinkedList<String> shipLocs: ships)
+			if (!isSunk(grid, shipLocs.get(0)))
+					won = false;
+		return won;
+	}
 }
