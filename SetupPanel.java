@@ -30,6 +30,10 @@ public class SetupPanel extends JPanel {
   private class ButtonListener implements ActionListener {
     public void actionPerformed (ActionEvent event) {
      if (event.getSource() == help) {
+       BattleshipGUI b = new BattleshipGUI();
+       b.frame.getContentPane().add(new InstructionTab());
+       b.frame.setVisible(true);
+       /*
        JFrame frame = new JFrame ("BATTLESHIP"); // Create JFrame for overall structure of GUI
        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE); // Close GUI upon pressing x
 
@@ -38,6 +42,7 @@ public class SetupPanel extends JPanel {
        
        frame.pack();
        frame.setVisible(true);
+       */
      }
     }
   }
