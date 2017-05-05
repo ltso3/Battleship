@@ -3,6 +3,8 @@
 //
 // WelcomePanel.java       CS230 Staff
 //
+// Audio classes taken online from
+// http://www.developer.com/java/other/article.php/2173111/Java-Sound-Playing-Back-Audio-Files-using-Java.htm
 //********************************************************************
 
 import javax.swing.*;
@@ -19,6 +21,8 @@ public class WelcomePanel extends JPanel {
   boolean stopPlayback = false;
   
   public WelcomePanel() {
+    playAudio();
+    
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Sets panel layout to BoxLayout vertically
     JPanel coverPic = new JPanel();
     JLabel cover = new JLabel(new ImageIcon("battleshipCover.png"));
@@ -29,7 +33,6 @@ public class WelcomePanel extends JPanel {
     start = new JButton("Start");
     start.setPreferredSize(new Dimension(100,50));
     start.setSize(100, 100);
-    start.setEnabled(true);
     start.addActionListener(new ButtonListener());
     button.add(start);
     add(button);
@@ -37,8 +40,13 @@ public class WelcomePanel extends JPanel {
   
   private class ButtonListener implements ActionListener {
     public void actionPerformed (ActionEvent event) {
-      start.setEnabled(false);
-      playAudio();
+      BattleshipGUI b = new BattleshipGUI();
+      b.frame.add(new SetupPanel());
+      b.frame.setVisible(true);
+      remove(start);
+      revalidate();
+      repaint();
+      remove(WelcomePanel.this);
     }
   }
   
@@ -62,12 +70,12 @@ public class WelcomePanel extends JPanel {
     catch (Exception e) {
       e.printStackTrace();
       System.exit(0);
-    }//end catch
-  }//end playAudio
+    }
+  }
   
 
-//Inner class to play back the data from the
-s// audio file.
+  //Inner class to play back the data from the
+  // audio file.
   class PlayThread extends Thread{
     byte tempBuffer[] = new byte[10000];
     
@@ -82,14 +90,11 @@ s// audio file.
         // true.
         while((cnt = audioInputStream.read(tempBuffer,0,tempBuffer.length)) != -1 && stopPlayback == false){
           if(cnt > 0){
-            //Write data to the internal buffer of
-            // the data line where it will be
-            // delivered to the speaker.
+            //Write data to the internal buffer of the data line where it will be delivered to the speaker.
             sourceDataLine.write(tempBuffer, 0, cnt);
-          }//end if
-        }//end while
-        //Block and wait for internal buffer of the
-        // data line to empty.
+          }
+        }
+        //Block and wait for internal buffer of the data line to empty.
         sourceDataLine.drain();
         sourceDataLine.close();
         
@@ -99,7 +104,7 @@ s// audio file.
       }catch (Exception e) {
         e.printStackTrace();
         System.exit(0);
-      }//end catch
-    }//end run
-  }//end inner class PlayThread
+      }
+    }
+  }
 }
