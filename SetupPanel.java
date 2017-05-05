@@ -20,24 +20,25 @@ public class SetupPanel extends JPanel {
     add(new GridPanel(), BorderLayout.CENTER);
     
     ships = new JPanel();
-	help = new JButton("Need help?");
-	help.addActionListener(new ButtonListener());
-	ships.add(help);
+    help = new JButton(new ImageIcon("helpIcon.png"));
+    help.setPreferredSize(new Dimension(35,35));
+    help.addActionListener(new ButtonListener());
+    ships.add(help);
     add(ships, BorderLayout.SOUTH);
   }
 
   private class ButtonListener implements ActionListener {
     public void actionPerformed (ActionEvent event) {
-    	if (event.getSource() == help) {
-    		JFrame frame = new JFrame ("BATTLESHIP"); // Create JFrame for overall structure of GUI
-    	    frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE); // Close GUI upon pressing x
+     if (event.getSource() == help) {
+       JFrame frame = new JFrame ("BATTLESHIP"); // Create JFrame for overall structure of GUI
+       frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE); // Close GUI upon pressing x
 
-    	    InstructionTab it = new InstructionTab();
-    	    frame.getContentPane().add(it);
-    	       
-    	    frame.pack();
-    	    frame.setVisible(true);
-    	}
+       InstructionTab it = new InstructionTab();
+       frame.getContentPane().add(it);
+       
+       frame.pack();
+       frame.setVisible(true);
+     }
     }
   }
 }

@@ -1,0 +1,14 @@
+Lauren:
+Ship.java
+GridPanel.java
+WelcomePanel.java
+
+Riann:
+Grid.java
+PlayBattleship.java
+
+Kalau:
+InstructionTab.java
+BattleshipGUI.java
+
+Kalau and Lauren will code most of the GUIs. Riann will code most of the game play. We will all come together to write the listeners.

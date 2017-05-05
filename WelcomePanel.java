@@ -39,7 +39,20 @@ public class WelcomePanel extends JPanel {
   }
   
   private class ButtonListener implements ActionListener {
-    public void actionPerformed (ActionEvent event) {
+    public void actionPerformed (ActionEvent event) {      
+      JFrame frame = new JFrame ("BATTLESHIP"); // Create JFrame for overall structure of GUI
+      frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE); // Close GUI upon pressing x
+      remove(start);
+      remove(start);
+      revalidate();
+      repaint();
+      remove(WelcomePanel.this);
+      SetupPanel sp = new SetupPanel();
+      frame.getContentPane().add(sp);
+      
+      frame.pack();
+      frame.setVisible(true);
+      /*
       BattleshipGUI b = new BattleshipGUI();
       b.frame.add(new SetupPanel());
       b.frame.setVisible(true);
@@ -47,6 +60,7 @@ public class WelcomePanel extends JPanel {
       revalidate();
       repaint();
       remove(WelcomePanel.this);
+      */
     }
   }
   

@@ -8,18 +8,24 @@
 import javax.swing.*;
 
 public class BattleshipGUI {
-   //-----------------------------------------------------------------
-   //  Creates and displays the main program frame.
-   //-----------------------------------------------------------------
-   public static void main (String[] args) {
-      JFrame frame = new JFrame ("Grad Schools"); // Create JFrame for overall structure of GUI
-      frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE); // Close GUI upon pressing x
-      
-      frame.add(new WelcomePage());
-                   
-      frame.getContentPane().add(tp);
-
-      frame.pack();
-      frame.setVisible(true);
-   }
+  
+  protected static JFrame frame;
+  //-----------------------------------------------------------------
+  //  Creates and displays the main program frame.
+  //-----------------------------------------------------------------
+  public static void main (String[] args) {
+    frame = new JFrame ("Welcome to Battleship!"); // Create JFrame for overall structure of GUI
+    frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE); // Close GUI upon pressing x
+    
+    // WelcomePanel wp = new WelcomePanel();
+    // frame.getContentPane().add(wp);
+    
+    SetupPanel sp = new SetupPanel();
+    frame.getContentPane().add(sp);
+//      InstructionTab it = new InstructionTab();
+//      frame.getContentPane().add(it);
+    
+    frame.pack();
+    frame.setVisible(true);
+  }
 }

@@ -17,11 +17,13 @@ public class BattleshipGUI {
     frame = new JFrame ("Welcome to Battleship!"); // Create JFrame for overall structure of GUI
     frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE); // Close GUI upon pressing x
     
-    // WelcomePanel wp = new WelcomePanel();
-    // frame.getContentPane().add(wp);
+    WelcomePanel wp = new WelcomePanel();
+    frame.getContentPane().add(wp);
     
-    SetupPanel sp = new SetupPanel();
-    frame.getContentPane().add(sp);
+//    AddShipsPanel asp = new AddShipsPanel();
+//   frame.getContentPane().add(asp);
+//    SetupPanel sp = new SetupPanel();
+//    frame.getContentPane().add(sp);
 //      InstructionTab it = new InstructionTab();
 //      frame.getContentPane().add(it);
     
