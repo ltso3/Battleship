@@ -75,12 +75,11 @@ public class WelcomePanel extends JPanel {
   }
   
 
-  //Inner class to play back the data from the
-  // audio file.
+  //Inner class to play back the data from the audio file.
   class PlayThread extends Thread{
     byte tempBuffer[] = new byte[10000];
     
-    public void run(){
+    public void run() {
       try{
         sourceDataLine.open(audioFormat);
         sourceDataLine.start();
@@ -102,7 +101,7 @@ public class WelcomePanel extends JPanel {
         //Prepare to playback another file
         start.setEnabled(true);
         stopPlayback = false;
-      }catch (Exception e) {
+      } catch (Exception e) {
         e.printStackTrace();
         System.exit(0);
       }
