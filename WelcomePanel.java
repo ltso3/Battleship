@@ -1,12 +1,3 @@
-//********************************************************************
-// CS230 Final Project
-//
-// WelcomePanel.java       CS230 Staff
-//
-// Audio classes taken online from
-// http://www.developer.com/java/other/article.php/2173111/Java-Sound-Playing-Back-Audio-Files-using-Java.htm
-//********************************************************************
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -25,6 +16,7 @@ public class WelcomePanel extends JPanel {
     
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Sets panel layout to BoxLayout vertically
     JPanel coverPic = new JPanel();
+    coverPic.setBackground(new Color(197, 204, 208));
     JLabel cover = new JLabel(new ImageIcon("battleshipCover.png"));
     coverPic.add(cover);
     add(coverPic);
@@ -33,8 +25,12 @@ public class WelcomePanel extends JPanel {
     start = new JButton("Start");
     start.setPreferredSize(new Dimension(100,50));
     start.setSize(100, 100);
+    start.setBackground(new Color(94, 197, 110));
+    start.setOpaque(true);
+    start.setBorder(BorderFactory.createLineBorder(Color.black));
     start.addActionListener(new ButtonListener());
     button.add(start);
+    button.setBackground(new Color(197, 204, 208));
     add(button);
   }
   

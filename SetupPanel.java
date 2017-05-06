@@ -1,10 +1,3 @@
-//********************************************************************
-// CS230 Final Project
-//
-// SetupPanel.java       CS230 Staff
-//
-//********************************************************************
-
 import javax.swing.*;
 
 import java.awt.*;
@@ -20,7 +13,7 @@ public class SetupPanel extends JPanel {
     add(new GridPanel(), BorderLayout.CENTER);
     
     ships = new JPanel();
-    help = new JButton(new ImageIcon("helpIcon.png"));
+    help = new JButton(new ImageIcon("help-icon.png"));
     help.setPreferredSize(new Dimension(35,35));
     help.addActionListener(new ButtonListener());
     ships.add(help);
