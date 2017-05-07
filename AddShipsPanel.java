@@ -90,7 +90,7 @@ public class AddShipsPanel extends JPanel {
 	}
 	
 	// Need method to ensure only one of each type of ship is added
-	// Also need to update grid with ships
+	// Also need to update grid with different color buttons, or a ship picture. Picture would need to be split into many pieces and resized.
 	private class AddShipsListener implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
 			String sType, sCoord, orientation;
