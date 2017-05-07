@@ -102,9 +102,9 @@ public class Grid {
   * @param location String denoting location to hit
   */
   public void markTargetGrid(String location) {
-	  if (!oceanGrid.get(location).equals("ship"))
+	  if (!oceanGrid.get(location).equals("ship")) 
 		  targetGrid.put(location, "MISS");
-	  else
+	  else 
 		  targetGrid.put(location, "HIT");
   }
   
@@ -158,6 +158,13 @@ public class Grid {
    */
   public int indexOfShip(Ship ship) {
 	  return shipTypes.indexOf(ship);
+  }
+  
+  public boolean hasShip(String loc) {
+	  boolean hasShip = false;
+	  if (oceanGrid.get(loc).equals("ship"))
+		  hasShip = true;
+	  return hasShip;
   }
   
   /**
