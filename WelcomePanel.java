@@ -12,7 +12,7 @@ public class WelcomePanel extends JPanel {
   boolean stopPlayback = false;
   
   public WelcomePanel() {
-    playAudio();
+  //  playAudio();
     
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Sets panel layout to BoxLayout vertically
     JPanel coverPic = new JPanel();
@@ -42,7 +42,7 @@ public class WelcomePanel extends JPanel {
       b.wp.removeAll();
       b.frame.getContentPane().remove(b.wp);
       b.wp = null;
-      b.frame.getContentPane().add(new SetupPanel());
+      b.frame.getContentPane().add(new AddShipsPanel());
       b.frame.setVisible(true);
     }
   }
