@@ -104,12 +104,9 @@ public class PlayBattleship {
 		return won;
 	}
 	
-	/**
-	 * @param args
-	 */
-	/**
-	 * @param args
-	 */
+	public Grid getPGrid() {
+		return pGrid;
+	}
 	public static void main(String[] args) {
 		PlayBattleship game = new PlayBattleship();
 		Ship boatyboatface = new Ship("Submarine", "Vertical", "C4");

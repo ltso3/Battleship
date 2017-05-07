@@ -2,8 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import MissPopup.ButtonListener;
-
 public class AddShipsPanel extends JPanel {
 	private JPanel upperText1, upperText2, upperText3, add, done, lowerText;
 	private JComboBox shipCombo, orientationCombo;
