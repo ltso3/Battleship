@@ -46,7 +46,7 @@ public class Ship {
   }
   
   public String toString() {
-    return name + ": /n" + startCoord;
+    return "Ship: " +name + ", length: " + length + ", Starting coordinate: " + startCoord + "\n";
   }
   
   public static void main(String[] args) {
