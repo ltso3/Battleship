@@ -9,7 +9,10 @@ public class GridPanel extends JPanel {
   private JButton normal;
   
   public GridPanel() {
+	  
     setLayout(new GridLayout(11, 11, 0, 0)); 
+    setBackground(new Color(92, 135, 149));
+    
     String[] letters = {"A","B","C","D","E","F","G","H","I","J"};
     int rowCounter = 0;
     int colCounter = 1;
