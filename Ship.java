@@ -46,20 +46,24 @@ public class Ship {
   }
   
   public String toString() {
+<<<<<<< HEAD
+    return name + ": " + startCoord;
+=======
     return "Ship: " +name + ", length: " + length + ", Starting coordinate: " + startCoord + "\n";
+>>>>>>> ea2924ba459a06d2948bc086c8161e6a4b393c00
   }
   
   public static void main(String[] args) {
     /*
     Ship carrier = new Ship("Carrier", "Vertical", "A1");
     System.out.println(carrier.getName() + " of length " + carrier.getLength());
-    Ship battleship = new Ship("Battleship", "Vertical", ");
+    Ship battleship = new Ship("Battleship", "Vertical", "F5");
     System.out.println(battleship.getName() + " of length " + battleship.getLength());
-    Ship cruiser = new Ship("Cruiser", "Vertical", coord);
+    Ship cruiser = new Ship("Cruiser", "Vertical", "J10");
     System.out.println(cruiser.getName() + " of length " + cruiser.getLength());
-    Ship submarine = new Ship("Submarine", "Vertical", coord);
+    Ship submarine = new Ship("Submarine", "Vertical", "E4");
     System.out.println(submarine.getName() + " of length " + submarine.getLength());
-    Ship destroyer = new Ship("Destroyer", "Vertical", coord);
+    Ship destroyer = new Ship("Destroyer", "Vertical", "G8");
     System.out.println(destroyer.getName() + " of length " + destroyer.getLength());
     */
   }
