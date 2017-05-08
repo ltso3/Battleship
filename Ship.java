@@ -46,11 +46,9 @@ public class Ship {
   }
   
   public String toString() {
-<<<<<<< HEAD
-    return name + ": " + startCoord;
-=======
-    return "Ship: " +name + ", length: " + length + ", Starting coordinate: " + startCoord + "\n";
->>>>>>> ea2924ba459a06d2948bc086c8161e6a4b393c00
+	  String s = "";
+	  s += "Ship: " +name + ", Length: " + length + ", Starting coordinate: " + startCoord + "\n";
+	  return s;
   }
   
   public static void main(String[] args) {
