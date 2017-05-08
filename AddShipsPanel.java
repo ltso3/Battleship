@@ -101,11 +101,39 @@ public class AddShipsPanel extends JPanel {
 			// Make sure button is pressed before adding ship
 			if (event.getSource() == addBtn) {
 				// Make sure that user has selected  a value for everything
-				if (!shipCombo.equals("...") && !orientationCombo.equals("...")&& !startCoord.equals("") ) {
+				if (!sType.equals("...") && !orientation.equals("...") && !sCoord.equals("") ) {
 					Ship tempShip = new Ship(sType, orientation, sCoord);
+					
+					boolean alreadyShip = false;
+				    char startRow = tempShip.getStartCoord().charAt(0);
+				    char startCol = tempShip.getStartCoord().charAt(1);
+				    
 					l4.setText("");
-			    	game.getPGrid().addShip(tempShip);
-			    	lowerText.add(new JLabel(tempShip.toString())); // Need to ensure this label is only added if a ship doesn't already exist in location
+			    	
+			        if(orientation.equals("Vertical")) {
+			            for(int i = 0; i < tempShip.getLength(); i++) {
+			          	  String loc = (char)(startRow + i) + Character.toString(startCol);
+			                if (game.getPGrid().hasShip(loc)) {
+			              	 l4.setText("There is already a ship in this location!"); 
+			              	 alreadyShip = true;
+			              	 break;
+			                }
+			            }
+			        }
+			        else {
+			            for(int i = 0; i < tempShip.getLength(); i++) {
+			            	String loc = Character.toString(startRow) + (char)(startCol + i);
+			                if (game.getPGrid().hasShip(loc)) {
+			              	 l4.setText("There is already a ship in this location!"); 
+			              	 alreadyShip = true;
+			              	 break;
+			                }
+			            }
+			        }
+			        if (alreadyShip == false) {
+				    	game.getPGrid().addShip(tempShip);
+				    	lowerText.add(new JLabel(tempShip.toString()), 0); 
+			        }
 				}
 				else {
 					l4.setText("Please make sure that you have typed in a coordinate and selected values for all the dropdown boxes");
