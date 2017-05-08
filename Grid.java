@@ -32,65 +32,27 @@ public class Grid {
    * @param ship to be placed
    */
   public void addShip(Ship ship) {
-    // Example: Cruiser (length 3) vertical from A1 to C1 
-    // Example: Cruiser (length 3) horizontal from A1 to A3
     char startRow = ship.getStartCoord().charAt(0);
-    char startCol = ship.getStartCoord().charAt(1);
-    boolean alreadyShip = false;
-    
+	char startCol = ship.getStartCoord().charAt(1);
+	
     if(ship.getOrientation().equals("Vertical")) {
-      // First for loop to ensure that ship does not already exist in locations
-      for(int i = 0; i < ship.getLength(); i++) {
-        String loc = (char)(startRow + i) + Character.toString(startCol);
-        if (oceanGrid.get(loc).equals("ship")) {
-          System.out.println("There is already a ship in this location!"); 
-          alreadyShip = true;
-          break;
-        }
-      }
-      // Places ship in each space it fills
-      for (int j = 0; j < ships.size(); j++) {
-    if (ships.get(j).isEmpty()) {
-        for(int i = 0; i < ship.getLength(); i++) {
-         if (!alreadyShip) {
-          String loc = (char)(startRow + i) + Character.toString(startCol);
-          oceanGrid.put(loc, "ship");
-          ships.get(j).add(loc);
-         }
-        }
-        j = ships.size();
-    } 
-      }
+    	for(int i = 0; i < ship.getLength(); i++) {
+    		String loc = (char)(startRow + i) + Character.toString(startCol);
+		    oceanGrid.put(loc, "ship");
+		    ships.get(counter).add(loc);
+		}
     }
-
-    else {
-     // First for loop to ensure that ship does not already exist in locations
-        for(int i = 0; i < ship.getLength(); i++) {
-         String loc = Character.toString(startRow) + (char)(startCol + i);
-            if (oceanGrid.get(loc).equals("ship")) {
-            System.out.println("There is already a ship in this location!"); 
-            alreadyShip = true;
-            break;
-            }
-        }
-        for (int j = 0; j < ships.size(); j++) {
-      if (ships.get(j).isEmpty()) {
-          for(int i = 0; i < ship.getLength(); i++) {
-           if (!alreadyShip) {
-            String loc = Character.toString(startRow) + (char)(startCol + i);
-            oceanGrid.put(loc, "ship");
-            ships.get(j).add(loc);
-           }
-          }
-          j = ships.size();
-      } 
-        }
-      }
     
-    if (!alreadyShip) {
-        shipTypes[counter] = ship;
-        counter++;
-    }
+    else {
+    	for(int i = 0; i < ship.getLength(); i++) {
+    		String loc = Character.toString(startRow) + (char)(startCol + i);
+		    oceanGrid.put(loc, "ship");
+		    ships.get(counter).add(loc);
+		    }
+        }
+
+    shipTypes[counter] = ship;
+    counter++;
   }
   /**
    * Alows the user to check if a missile has been already shot to a certain location
@@ -106,17 +68,10 @@ public class Grid {
   * @param location String denoting location to hit
   */
   public void markTargetGrid(String location) {
-<<<<<<< HEAD
    if (!oceanGrid.get(location).equals("ship")) 
     targetGrid.put(location, "MISS");
    else 
     targetGrid.put(location, "HIT");
-=======
-	  if (!oceanGrid.get(location).equals("ship")) 
-		  targetGrid.put(location, "MISS");
-	  else 
-		  targetGrid.put(location, "HIT");
->>>>>>> ea2924ba459a06d2948bc086c8161e6a4b393c00
   }
   
   /**
@@ -177,13 +132,6 @@ public class Grid {
   
   public boolean hasShip(String loc) {
    return oceanGrid.get(loc).equals("ship");
-  }
-  
-  public boolean hasShip(String loc) {
-	  boolean hasShip = false;
-	  if (oceanGrid.get(loc).equals("ship"))
-		  hasShip = true;
-	  return hasShip;
   }
   
   /**
