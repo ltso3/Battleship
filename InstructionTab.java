@@ -10,13 +10,16 @@ import javax.swing.*;
 
 public class InstructionTab extends JPanel {
   public InstructionTab() {
-    setBackground (Color.white);
+    setBackground (new Color(197,204,208));
     setLayout(new GridLayout(1,2)); 
     
     //BoxLayout panels within a FlowLayout panel to create a column effect
     JPanel left = new JPanel();
     left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
     add(left);
+    
+    JScrollPane scroll = new JScrollPane(left);
+    add(scroll);
     
     JPanel right = new JPanel();
     right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
@@ -111,7 +114,6 @@ public class InstructionTab extends JPanel {
     left.add(l21);
     left.add(l22);
     left.add(l23);
-    left.add(new JButton("Let's Play")); //add play button at the bottom of the instruction page
     
     //JLabels for right column 
     //visuals 
