@@ -10,9 +10,14 @@ public class WelcomePanel extends JPanel {
   AudioInputStream audioInputStream;
   SourceDataLine sourceDataLine;
   boolean stopPlayback = false;
+  PlayBattleship game;
+  BattleshipGUI b;
   
-  public WelcomePanel() {
+  public WelcomePanel(PlayBattleship game) {
   //  playAudio();
+    
+    this.game = game;
+    b = new BattleshipGUI();
     
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Sets panel layout to BoxLayout vertically
     JPanel coverPic = new JPanel();
@@ -36,13 +41,12 @@ public class WelcomePanel extends JPanel {
   
   private class ButtonListener implements ActionListener {
     public void actionPerformed (ActionEvent event) {      
-      BattleshipGUI b = new BattleshipGUI();
       b.wp.invalidate();
       b.wp.setVisible(false);
       b.wp.removeAll();
       b.frame.getContentPane().remove(b.wp);
       b.wp = null;
-      b.frame.getContentPane().add(new AddShipsPanel());
+      b.frame.getContentPane().add(new AddShipsPanel(game, b));
       b.frame.setVisible(true);
     }
   }

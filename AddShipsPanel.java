@@ -10,10 +10,12 @@ public class AddShipsPanel extends JPanel {
   private JButton addBtn, doneBtn;
   private JLabel l1, l2, l3, l4;
   private PlayBattleship game;
+  private BattleshipGUI b;
   
-  public AddShipsPanel(PlayBattleship game) {
+  public AddShipsPanel(PlayBattleship game, BattleshipGUI b) {
     
     this.game = game;
+    this.b = b;
     
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     setBackground(new Color(197, 204, 208));
@@ -99,8 +101,6 @@ public class AddShipsPanel extends JPanel {
       orientation = orientationCombo.getSelectedItem().toString();
       sCoord = startCoord.getText(); // Need to check that starting coordinate is valid
       
-      System.out.println("name: " + sType + "| orientation: " + orientation + "| sCoord: " + sCoord);
-      
       // Make sure that user has selected  a value for everything
       if (!sType.equals("...") && !orientation.equals("...") && !sCoord.equals("") ) {
         Ship temp = new Ship(sType, orientation, sCoord);
@@ -113,7 +113,6 @@ public class AddShipsPanel extends JPanel {
         l4.setText("Please make sure that you have typed in a coordinate and selected values for all the dropdown boxes");
       }
     }
-    
   }
   
   // Only works if launching this page from BattleShipGUI and this page isn't accessed after WelcomePanel
@@ -126,15 +125,12 @@ public class AddShipsPanel extends JPanel {
           allShipsAdded = false;
       }
       if(allShipsAdded) {
-        BattleshipGUI b = new BattleshipGUI();
-        b.asp.invalidate();
-        b.asp.setVisible(false);
-        b.asp.removeAll();
-        b.frame.getContentPane().remove(b.asp);
+        b.frame.getContentPane().removeAll();
         b.asp = null;
-        b.frame.getContentPane().add(new SetupPanel());
+        b.frame.getContentPane().add(new SetupPanel(game, b));
         b.frame.setVisible(true);
       }
+      
       else {
         l4.setText("Please make sure that you have added all ships");
       }

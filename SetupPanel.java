@@ -7,12 +7,16 @@ public class SetupPanel extends JPanel {
   private JPanel ships, grids, gridsLP, shipsLP;
   private JButton help;
   private JLabel gridsL, shipsL;
+  private PlayBattleship game;
+  private BattleshipGUI b;
   
-  public SetupPanel() {
-	
-	setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-	setBackground(new Color(92, 135, 149));
+  public SetupPanel(PlayBattleship game, BattleshipGUI b) {
+    this.game = game;
+    this.b = b;
     
+    setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    setBackground(new Color(92, 135, 149));
+
     gridsLP = new JPanel();
     gridsLP.setBackground(new Color(92, 135, 149));
     gridsL = new JLabel("Target Grid");
@@ -27,6 +31,7 @@ public class SetupPanel extends JPanel {
     grids.add(new GridPanel());
     grids.add(Box.createRigidArea(new Dimension(0,30)));
     grids.add(new GridPanel());
+    add(grids, BorderLayout.CENTER);
     grids.setBackground(new Color(92, 135, 149));
     add(grids);
     
