@@ -1,7 +1,8 @@
 /** InstructionTab.java
   * Created by: Riann, Lauren, Kalau
   * CS 230 Final Project
-  * 26 April 2017
+  * Created: 26 April 2017
+  * Modified: 8 May 2017
   * This class creates an instruction page to add to the start page
   **/
 
@@ -10,27 +11,36 @@ import javax.swing.*;
 
 public class InstructionTab extends JPanel {
   public InstructionTab() {
-    setBackground (new Color(197,204,208));
-    setLayout(new GridLayout(1,2)); 
+    setBackground(new Color(197,204,208));
+    setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     
     //BoxLayout panels within a FlowLayout panel to create a column effect
-    JPanel left = new JPanel();
-    left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
-    add(left);
+    JPanel text = new JPanel();
+    text.setLayout(new BoxLayout(text, BoxLayout.Y_AXIS));
+    text.setBackground(new Color(197,204,208));
     
-    JScrollPane scroll = new JScrollPane(left);
+    //allows panel to scroll when there's not enough room 
+    JScrollPane scroll = new JScrollPane(text);
     add(scroll);
     
-    JPanel right = new JPanel();
-    right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
-    add(right);
+    //create & scale banana boat picture; to be inserted at the bottom of page
+    ImageIcon b = new ImageIcon("bananaBoat.png");
+    Image image = b.getImage();
+    Image newImage = image.getScaledInstance(70, 50,  java.awt.Image.SCALE_SMOOTH);
+    b = new ImageIcon(newImage);
+    
+//    //creates a border around the instructions
+//    Border blackline = BorderFactory.createLineBorder(Color.black);
+//    TitledBorder title = BorderFactory.createTitledBorder(blackline, "title");
+//    title.setTitlePosition(TitledBorder.ABOVE_TOP);
+//    text.setBorder(title);
 
     //JLabel for the game title
     JLabel title = new JLabel("BATTLESHIP"); //insert picture? 
     title.setFont(new Font("Serif",Font.BOLD, 36));
 
-    //JLabels for the left column 
-    //Object of game, game "pieces", gameplay instructions, salvo version
+    //JLabels for the text JPanel 
+    //Object of game, game "pieces", gameplay instructions, salvo version, author notes
     JLabel l1 = new JLabel("For 2 Players - Human vs Computer");
     l1.setFont(new Font("Sans Serif",Font.PLAIN, 18));
     JLabel l2 = new JLabel("OJBECT OF THE GAME");
@@ -89,47 +99,38 @@ public class InstructionTab extends JPanel {
     l22.setFont(new Font("Sans Serif",Font.PLAIN, 18));
     l23.setFont(new Font("Sans Serif",Font.PLAIN, 18));
     
-    //add JLabels to left panel
-    left.add(title);
-    left.add(l1);
-    left.add(l2);
-    left.add(l3);
-    left.add(l4);
-    left.add(l5);
-    left.add(l6);
-    left.add(l7);
-    left.add(l8);
-    left.add(l9);
-    left.add(l10);
-    left.add(l11);
-    left.add(l12);
-    left.add(l13);
-    left.add(l14);
-    left.add(l15);
-    left.add(l16);
-    left.add(l17);
-    left.add(l18);
-    left.add(l19);
-    left.add(l20);
-    left.add(l21);
-    left.add(l22);
-    left.add(l23);
+    //author notes
+    JLabel l24 = new JLabel("<html>CS 230 Final Project: An adaption of Hasbro's Battleship made by Riann, Kalau, and Lauren. BananaBoatCo."); 
+    l24.setFont(new Font("Sans Serif",Font.PLAIN, 12));
+    l24.setIcon(b); //insert banana boat image 
+    l24.setHorizontalTextPosition(JLabel.LEFT); //text on left of image
+
     
-    //JLabels for right column 
-    //visuals 
-    JLabel r1 = new JLabel("FIGURE 1");
-    JLabel r2 = new JLabel("FIGURE 2");
-    JLabel r3 = new JLabel("FIGURE 3");
-    JLabel r4 = new JLabel("FIGURE 4");
-    JLabel r5 = new JLabel("FIGURE 5");
-    JLabel r6 = new JLabel("FIGURE 6");
-    
-    //add JLabels to right panel
-    right.add(r1);
-    right.add(r2);
-    right.add(r3);
-    right.add(r4);
-    right.add(r5);
-    right.add(r6);
+    //add JLabels to text panel
+    text.add(title);
+    text.add(l1);
+    text.add(l2);
+    text.add(l3);
+    text.add(l4);
+    text.add(l5);
+    text.add(l6);
+    text.add(l7);
+    text.add(l8);
+    text.add(l9);
+    text.add(l10);
+    text.add(l11);
+    text.add(l12);
+    text.add(l13);
+    text.add(l14);
+    text.add(l15);
+    text.add(l16);
+    text.add(l17);
+    text.add(l18);
+    text.add(l19);
+    text.add(l20);
+    text.add(l21);
+    text.add(l22);
+    text.add(l23);
+    text.add(l24);
   }
 }
