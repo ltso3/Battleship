@@ -6,11 +6,17 @@ import java.awt.event.*;
 public class SetupPanel extends JPanel {
   private JPanel ships;
   private JButton help;
+  private JPanel grids;
   
   public SetupPanel() {
     setLayout(new BorderLayout()); // Sets panel layout to BoxLayout vertically
     
-    add(new GridPanel(), BorderLayout.CENTER);
+    grids = new JPanel();
+    grids.setLayout(new BoxLayout(grids, BoxLayout.Y_AXIS));
+    grids.add(new GridPanel());
+    grids.add(Box.createRigidArea(new Dimension(0,30)));
+    grids.add(new GridPanel());
+    add(grids, BorderLayout.CENTER);
     
     ships = new JPanel();
     help = new JButton(new ImageIcon("help-icon.png"));
