@@ -103,6 +103,8 @@ public class AddShipsPanel extends JPanel {
       orientation = orientationCombo.getSelectedItem().toString();
       sCoord = startCoord.getText(); // Need to check that starting coordinate is valid
       
+      l4.setText("");
+      
       // Make sure that user has selected  a value for everything
       if (!sType.equals("...") && !orientation.equals("...") && !sCoord.equals("") ) {
         Ship temp = new Ship(sType, orientation, sCoord);
