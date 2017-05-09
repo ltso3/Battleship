@@ -38,15 +38,16 @@ public class AddShipsPanel extends JPanel {
     
     // Set  text for each panel
     l1 = new JLabel("To begin, input a starting coordinate and select an orientation for each ship, then click [Add]."); 
-    l2 = new JLabel("'Vertical' ships go from the given location down and 'horizontal' ships go from the given location right.");
-    l3 = new JLabel("Once you've entered all 5 ships, press [Let's Play!]"); 
+    l2 = new JLabel("'Vertical' shipLocs go from the given location down and 'horizontal' shipLocs go from the given location right.");
+    l3 = new JLabel("Once you've entered all 5 shipLocs, press [Let's Play!]"); 
     l1.setFont(new Font("Russo One", Font.PLAIN, 14));
     l2.setFont(new Font("Russo One", Font.PLAIN, 14));
     l3.setFont(new Font("Russo One", Font.PLAIN, 14));
     upperText1.add(l1);
     upperText2.add(l2);
     upperText3.add(l3);
-    l4 = new JLabel("Information on added ships will appear here.");
+
+    l4 = new JLabel("Information on added shipLocs will appear here.");
     lowerText.add(l4);
     
     // Create combo box for ship type
@@ -115,13 +116,12 @@ public class AddShipsPanel extends JPanel {
     }
   }
   
-  // Only works if launching this page from BattleShipGUI and this page isn't accessed after WelcomePanel
   // Need way to ensure play button only works if the ships have already been added
   private class DoneListener implements ActionListener {
     public void actionPerformed(ActionEvent event) {
       boolean allShipsAdded = true;
-      for(int i = 0; i < game.getPGrid().getShips().size(); i++) {
-        if(game.getPGrid().getShips().get(i).size() == 0) 
+      for(int i = 0; i < game.getPGrid().getShipLocs().size(); i++) {
+        if(game.getPGrid().getShipLocs().get(i).size() == 0) 
           allShipsAdded = false;
       }
       if(allShipsAdded) {
@@ -132,7 +132,7 @@ public class AddShipsPanel extends JPanel {
       }
       
       else {
-        l4.setText("Please make sure that you have added all ships");
+        l4.setText("Please make sure that you have added all shipLocs");
       }
     }
   }
