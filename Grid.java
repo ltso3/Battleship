@@ -141,7 +141,7 @@ public class Grid {
     
     // Start coordinate broken down into row and column
     char column = ship.getStartCoord().charAt(0);
-    String row = Character.toString(ship.getStartCoord().charAt(1));
+    String row = ship.getStartCoord().substring(1);
     
     // Traverses through columns if orientation is horizontal
     if (ship.getOrientation().equals("Horizontal")) {

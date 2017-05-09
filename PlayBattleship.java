@@ -29,7 +29,7 @@ public class PlayBattleship {
    * Simulates one turn for the player, firing a missile and informing them if a ship has been sunk
    * @param loc String denoting location to fire missile at
    */
-  private void playerTurn(String loc) {
+  public void playerTurn(String loc) {
     if (cGrid.hasShip(loc)) 
       System.out.println("HIT at " + loc);
     else
@@ -44,7 +44,7 @@ public class PlayBattleship {
   /**
    * Simulates one turn for the computer, firing a missile and informing them if a ship has been sunk
    */
-  private void computerTurn() { // Can make this the easy level later and hard will have more focused targeting
+  public void computerTurn() { // Can make this the easy level later and hard will have more focused targeting
     
     // Generate a random location for the computer to shoot at
     String loc;
@@ -57,6 +57,7 @@ public class PlayBattleship {
     while (!cGrid.isValidMissile(loc)) {
       let = rand.nextInt((74 - 65) + 1) + 65;
       num = rand.nextInt(10) + 1;
+      loc = (char)(let) + Integer.toString(num);
     }
 
     if (pGrid.hasShip(loc)) 

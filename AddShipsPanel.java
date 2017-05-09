@@ -8,7 +8,7 @@ public class AddShipsPanel extends JPanel {
   private JComboBox shipCombo, orientationCombo;
   private TextField startCoord;
   private JButton addBtn, doneBtn;
-  private JLabel l1, l2, l3, l4;
+  private JLabel l1, l2, l3, l4, newShip;
   private PlayBattleship game;
   private BattleshipGUI b;
   
@@ -49,6 +49,7 @@ public class AddShipsPanel extends JPanel {
 
     l4 = new JLabel("Information on added shipLocs will appear here.");
     lowerText.add(l4);
+    newShip = new JLabel("");
     
     // Create combo box for ship type
     String[] shipTs  = {"...", "Destroyer", "Submarine", "Cruiser", "Battleship", "Carrier"};
@@ -107,8 +108,12 @@ public class AddShipsPanel extends JPanel {
         Ship temp = new Ship(sType, orientation, sCoord);
         if(game.getPGrid().isValidStart(temp)) {
           game.getPGrid().addShip(temp);
-          lowerText.add(new JLabel(temp.toString()), 0); 
+          l4.setText("");
+          newShip = new JLabel(temp.toString());
+          lowerText.add(newShip, 0);
         }
+        else 
+          l4.setText("Please enter a valid start coordinate.");
       }
       else {
         l4.setText("Please make sure that you have typed in a coordinate and selected values for all the dropdown boxes");
