@@ -5,6 +5,7 @@ import java.util.*;
 
 public class TargetGridPanel extends JPanel {
   
+  private JButton[][] buttons;
   private JButton letter;
   private JButton number;
   private JButton normal;
@@ -14,40 +15,27 @@ public class TargetGridPanel extends JPanel {
     setLayout(new GridLayout(11, 11, 0, 0)); 
     setBackground(new Color(92, 135, 149));
     
+    buttons = new JButton[12][12];
     String[] letters = {"A","B","C","D","E","F","G","H","I","J"};
     int rowCounter = 0;
     int colCounter = 1;
     
-    for(int i = 0; i < 121; i++) {
-      String label = "";
-      if(i > 0 && i < 11) {
-        label = letters[rowCounter];
-        letter = new JButton(label);
-        letter.setBackground(new Color(197, 204, 208));
-        letter.setOpaque(true);
-        letter.setBorder(BorderFactory.createLineBorder(Color.black));
-        letter.setPreferredSize(new Dimension(110, 50));
-        add(letter);
-        rowCounter++;
-      }
-      else if(i > 0 && i % 11 == 0) {
-        label = Integer.toString(colCounter);
-        number = new JButton(label);
-        number.setBackground(new Color(197, 204, 208));
-        number.setOpaque(true);
-        number.setBorder(BorderFactory.createLineBorder(Color.black));
-        number.setPreferredSize(new Dimension(110, 50));
-        add(number);
-        colCounter++;
-      }
-      else {
-        normal = new JButton();
-        normal.addActionListener(new ButtonListener());
-        normal.setBackground(new Color(197, 204, 208));
-        normal.setOpaque(true);
-        normal.setBorder(BorderFactory.createLineBorder(Color.black));
-        normal.setPreferredSize(new Dimension(110, 50));
-        add(normal);
+    for(int i = 0; i < 11; i++) {
+      for(int j = 0; j < 11; j++) {
+        if(i == 0 && j != 0) 
+          buttons[i][j] = new JButton(letters[j - 1]);
+        else if(j == 0 && i != 0)
+          buttons[i][j] = new JButton(Integer.toString(i));
+        else {
+          buttons[i][j] = new JButton("");
+          buttons[i][j].addActionListener(new ButtonListener());
+        }
+        
+        buttons[i][j].setBackground(new Color(197, 204, 208));
+        buttons[i][j].setOpaque(true);
+        buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
+        buttons[i][j].setPreferredSize(new Dimension(110, 50));
+        add(buttons[i][j]);
       }
     }
   }

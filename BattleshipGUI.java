@@ -22,6 +22,9 @@ public class BattleshipGUI {
 //      asp = new AddShipsPanel(game, this);
 //      frame.getContentPane().add(asp);
     
+//    OceanGridPanel ogp = new OceanGridPanel(game);
+//    frame.getContentPane().add(ogp);
+    
 //    SetupPanel sp = new SetupPanel();
 //    frame.getContentPane().add(sp);
 // 
