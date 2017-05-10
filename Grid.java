@@ -74,7 +74,9 @@ public class Grid {
    */
   public void markOceanGrid(String loc){
     if (hasShip(loc))
-      oceanGrid.put(loc, "HIT");
+        oceanGrid.put(loc, "HIT");
+    else
+    	oceanGrid.put(loc, "MISS");
   }
   
   /**
