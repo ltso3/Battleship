@@ -1,10 +1,12 @@
 import javax.swing.*;
-
+import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class SetupPanel extends JPanel {
   private JPanel shipLocs, grids, gridsLP, shipLocsLP, fire;
+  private TargetGridPanel tgp;
+  private OceanGridPanel ogp;
   private TextField fireCoord;
   private JButton help, fireBtn;
   private JLabel gridsL, shipLocsL;
@@ -14,6 +16,9 @@ public class SetupPanel extends JPanel {
   public SetupPanel(PlayBattleship game, BattleshipGUI b) {
     this.game = game;
     this.b = b;
+    
+    tgp = new TargetGridPanel(game);
+    ogp = new OceanGridPanel(game);
     
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     setBackground(new Color(92, 135, 149));
@@ -90,11 +95,24 @@ public class SetupPanel extends JPanel {
   
   private class FireButtonListener implements ActionListener {
     public void actionPerformed (ActionEvent event) { 
-      game.playerTurn(fireCoord.getText());
-//      if(game.getPGrid().getOceanGrid().hasShip()) {
-//        gridsLP.
-          //how to get grid to display red peg if grid is comprised of unnamed buttons
-//      }
+      String loc = fireCoord.getText();
+      game.playerTurn(loc);
+      int row = Integer.parseInt(loc.substring(1));
+      int column = (int) loc.charAt(0) - 64;
+      LinkedList<Integer> temp = new LinkedList<Integer>();
+      temp.add(row);
+      temp.add(column);
+      
+      if(game.fireMissile(loc, game.getPGrid(), game.getCGrid()))
+        tgp.changeToRed(temp);
+      else {
+        tgp.changeToWhite(temp);
+        tgp.buttons[row][column].setIcon(new ImageIcon("white.png"));
+      }
+      
+      //invalidate();
+//      repaint();
+      tgp.revalidate();
     }
   }
 }

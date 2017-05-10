@@ -72,11 +72,9 @@ public class Grid {
    * Makes places on the oceanGrid with corresponding message
    * @param location String denoting location to hit
    */
-  public void markOceanGrid(String location){
-    if (oceanGrid.get(location).equals("Empty"))
-      oceanGrid.put(location, "MISS");
-    else
-      oceanGrid.put(location, "HIT");
+  public void markOceanGrid(String loc){
+    if (hasShip(loc))
+      oceanGrid.put(loc, "HIT");
   }
   
   /**
@@ -96,6 +94,7 @@ public class Grid {
   }
   
   /**
+   * 
    * Getter method for ship locations
    * @return Vector<LinkedList<String>> shipLocs
    */
@@ -182,6 +181,7 @@ public class Grid {
     }
     return true;
   }
+    
   
   /**
    * Determines whether a ship has been sunk at the end of a turn

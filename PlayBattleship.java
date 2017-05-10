@@ -18,11 +18,12 @@ public class PlayBattleship {
    * @param grid1 Grid object for one player
    * @param grid2 Grid object for second player
    */
-  private void fireMissile(String loc, Grid grid1, Grid grid2) {
+  public boolean fireMissile(String loc, Grid grid1, Grid grid2) {
     if (grid2.isValidMissile(loc)) {
       grid2.markOceanGrid(loc);
       grid1.markTargetGrid(loc);
     }
+    return grid2.hasShip(loc);
   }
   
   /**

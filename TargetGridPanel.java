@@ -5,13 +5,13 @@ import java.util.*;
 
 public class TargetGridPanel extends JPanel {
   
-  private JButton[][] buttons;
+  public JButton[][] buttons;
   private JButton letter;
   private JButton number;
   private JButton normal;
   
   public TargetGridPanel(PlayBattleship game) {
-   
+    
     setLayout(new GridLayout(11, 11, 0, 0)); 
     setBackground(new Color(92, 135, 149));
     
@@ -28,11 +28,11 @@ public class TargetGridPanel extends JPanel {
           buttons[i][j] = new JButton(Integer.toString(i));
         else {
           buttons[i][j] = new JButton("");
-          buttons[i][j].addActionListener(new ButtonListener());
         }
         
         buttons[i][j].setBackground(new Color(197, 204, 208));
         buttons[i][j].setOpaque(true);
+        buttons[i][j].addActionListener(new FireButtonListener());
         buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
         buttons[i][j].setPreferredSize(new Dimension(110, 50));
         add(buttons[i][j]);
@@ -40,13 +40,28 @@ public class TargetGridPanel extends JPanel {
     }
   }
   
-  private class ButtonListener implements ActionListener {
-    public void actionPerformed (ActionEvent event) {
-//      playerTurn(
-//      ((JButton) event.getSource()).setIcon(new ImageIcon("white.png"));
-//      if(
-      // fire shot by pressing
-         //how to get grid to display red peg if grid is comprised of unnamed buttons
+  public void changeToRed(LinkedList<Integer> loc) {
+    buttons[loc.get(0)][loc.get(1)].setIcon(new ImageIcon("red.png"));
+  }
+  
+  public void changeToWhite(LinkedList<Integer> loc) {
+    buttons[loc.get(0)][loc.get(1)].setIcon(new ImageIcon("white.png"));
+  }
+  
+  private class FireButtonListener implements ActionListener {
+    public void actionPerformed (ActionEvent event) { 
+//      String loc = fireCoord.getText();
+//      game.playerTurn(loc);
+//      int row = Integer.parseInt(loc.substring(1));
+//      int column = (int) loc.charAt(0) - 64;
+      
+//      buttons[1][1].setText("HEY");
+      
+//      if(game.fireMissile(loc, game.getPGrid(), game.getCGrid()))
+//        buttons[row][column].setIcon(new ImageIcon("red.png"));
+//      else {
+//        buttons[row][column].setIcon(new ImageIcon("white.png"));
+//      }
     }
   }
 }

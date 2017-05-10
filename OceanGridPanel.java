@@ -5,7 +5,7 @@ import java.util.*;
 
 public class OceanGridPanel extends JPanel {
   
-  private JButton[][] buttons;
+  public JButton[][] buttons;
   private JButton letter;
   private JButton number;
   private JButton normal;
