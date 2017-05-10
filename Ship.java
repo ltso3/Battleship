@@ -24,6 +24,13 @@ public class Ship {
     return this.startCoord;
   }
   
+  public void setOrientation(String o) {
+	  orientation = o;
+  }
+  public void setStartCoord(String newCoord) {
+	  startCoord = newCoord;
+  }
+  
   public int setLength(String name) {
     int len = 0;
     if(name.equals("Carrier"))
@@ -47,7 +54,7 @@ public class Ship {
   
   public String toString() {
 	  String s = "";
-	  s += "Ship: " +name + ", Length: " + length + ", Starting coordinate: " + startCoord + "\n";
+	  s += "Ship: " +name + ", Length: " + length + " Orientation: " + orientation + " Starting coordinate: " + startCoord + "\n";
 	  return s;
   }
   
