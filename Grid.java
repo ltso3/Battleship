@@ -126,7 +126,8 @@ public class Grid {
   }
   
   public boolean hasShip(String loc) {
-    return !oceanGrid.get(loc).equals("Empty");
+    return oceanGrid.get(loc).equals("HIT") || oceanGrid.get(loc).equals("Carrier") || oceanGrid.get(loc).equals("Battleship") 
+    		|| oceanGrid.get(loc).equals("Destroyer") || oceanGrid.get(loc).equals("Submarine") || oceanGrid.get(loc).equals("Cruiser");
   }
   
   /*
@@ -163,7 +164,7 @@ public class Grid {
    * Check if location to be fired upon is within the grid and not previously fired upon
    * @return true if yes, false otherwise
    * */
-  public boolean isValidMissile(String loc) {
+  public boolean isOpenSpot(String loc) {
     return oceanGrid.containsKey(loc) && targetGrid.get(loc).equals("Empty");
   }
   
@@ -224,7 +225,7 @@ public class Grid {
 //    System.out.println("Target: " + grid.getTargetGrid());
 //    System.out.println("Ocean: " + grid.getOceanGrid());
     
-    Ship ship1 = new Ship("Destroyer", "Vertical", "C4");
+/*    Ship ship1 = new Ship("Destroyer", "Vertical", "C4");
     Ship ship2 = new Ship("Submarine", "Horizontal", "C3");
     Ship ship3 = new Ship("Battleship", "Vertical", "A3");
     Ship ship4 = new Ship("Cruiser", "Horizontal", "C2");
@@ -248,6 +249,6 @@ public class Grid {
     grid.addShip(ship4);
     
     System.out.println(grid.getShipLocs());
-    System.out.println(grid.getShipTypes());
+    System.out.println(grid.getShipTypes());*/
   }
 }
