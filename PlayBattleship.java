@@ -6,10 +6,51 @@ public class PlayBattleship {
   private Grid pGrid;
   private Grid cGrid;
   
+  /**
+   * Constructor which initializes player Grids and also sets up ships on cGrid
+   */
   public PlayBattleship() {
     // Assign instance variables
     pGrid = new Grid();
     cGrid = new Grid();
+    
+    // Create ships to be added to cGrid
+    Ship[] cShips = new Ship[5];
+    Ship ship1 = new Ship("Destroyer", "Vertical", "A1");
+    Ship ship2 = new Ship("Submarine", "Vertical", "A1");
+    Ship ship3 = new Ship("Cruiser", "Vertical", "A1");
+    Ship ship4 = new Ship("Battleship", "Vertical", "A1");
+    Ship ship5 = new Ship("Carrier", "Vertical", "A1");
+    cShips[0] = ship1;
+    cShips[1] = ship2;
+    cShips[2] = ship3;
+    cShips[3] = ship4;
+    cShips[4] = ship5;
+
+    // Randomize ship orientations
+    for (Ship ship: cShips) {
+        Random rand1 = new Random();
+        int randNum = rand1.nextInt(10);
+    	if (randNum/2 != 0)
+    		ship.setOrientation("Horizontal");
+    }
+
+    // Randomize starting coordinates and add ships
+    for (Ship ship: cShips) {
+        Random rand2 = new Random(); 
+        int let = rand2.nextInt(10) + 65;
+        int num = rand2.nextInt(10) + 1;
+        String loc = (char)(let) + Integer.toString(num);
+    	ship.setStartCoord(loc);
+    	
+    	while (!cGrid.isOpenSpot(loc) || !cGrid.isValidStart(ship)) {
+	    	let = rand2.nextInt(10) + 65;
+	        num = rand2.nextInt(10) + 1;
+	        loc = (char)(let) + Integer.toString(num);
+	        ship.setStartCoord(loc);
+    	}
+    	cGrid.addShip(ship);
+    }
   }
   
   /**
@@ -19,7 +60,7 @@ public class PlayBattleship {
    * @param grid2 Grid object for second player
    */
   public boolean fireMissile(String loc, Grid grid1, Grid grid2) {
-    if (grid2.isValidMissile(loc)) {
+    if (grid2.isOpenSpot(loc)) {
       grid2.markOceanGrid(loc);
       grid1.markTargetGrid(loc);
     }
@@ -55,10 +96,11 @@ public class PlayBattleship {
     loc = (char)(let) + Integer.toString(num);
 
     // Make sure the location can be shot at before firing missile
-    while (!cGrid.isValidMissile(loc)) {
+    while (!cGrid.isOpenSpot(loc)) {
       let = rand.nextInt((74 - 65) + 1) + 65;
       num = rand.nextInt(10) + 1;
       loc = (char)(let) + Integer.toString(num);
+      System.out.println(loc);
     }
 
     if (pGrid.hasShip(loc)) 
@@ -84,8 +126,10 @@ public class PlayBattleship {
     PlayBattleship game = new PlayBattleship();
     Ship boatyboatface = new Ship("Submarine", "Vertical", "C4");
     
-    // Testing playerTurn
-    game.cGrid.addShip(boatyboatface);
+    System.out.println(game.cGrid.getShipLocs());
+    
+    // Testing playerTurn (written before cGrid had ships added to it in constructor)
+    //game.cGrid.addShip(boatyboatface);
     System.out.print("Player is shooting at C5 (HIT): ");
     game.playerTurn("C5");
     System.out.print("Player is shooting at E6 (MISS): ");
