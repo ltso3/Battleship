@@ -1,6 +1,5 @@
 import java.util.Enumeration;
 import java.util.Random;
-import java.util.*;
 
 public class PlayBattleship {
   
@@ -152,6 +151,7 @@ public class PlayBattleship {
  
   /**
    * Simulates one turn for the computer, firing a missile and informing them if a ship has been sunk
+   * @return boolean hit
    */
   public boolean computerTurn() { 
  boolean hit = false;
@@ -225,49 +225,31 @@ public class PlayBattleship {
     return hit;
   }
   
+  /**
+   * Getter method to get coordinate of missile fired by computer
+   * @return cCoord (location of computer's fired missile)
+   */
   public String getCCoord() {
    return cCoord;
   }
   
+  /**
+   * Getter method to get player's grid
+   * @return pGrid (player's grid)
+   */
   public Grid getPGrid() {
     return pGrid;
   }
   
+  /**
+   * Getter method to get computer's grid 
+   * @return cGrid (computer's grid)
+   */
   public Grid getCGrid() {
     return cGrid;
   }
   
-  
-  /**
-   * Determine whether all ships are sunk and the game is over
-   * @return true if all ships are sunk, false otherwise
-   */
-  public boolean playerWin() {
-    boolean won = true;
-    for (LinkedList<String> locs: cGrid.getShipLocs()) {
-      for(String loc : locs) {
-        if (!cGrid.getOceanGrid().get(loc).equals("HIT"))
-              won = false;
-      }
-    }
-    return won;
-  }
-  
-  /**
-   * Determine whether all ships are sunk and the game is over
-   * @return true if all ships are sunk, false otherwise
-   */
-  public boolean computerWin() {
-    boolean won = true;
-    for (LinkedList<String> locs: pGrid.getShipLocs()) {
-      for(String loc : locs) {
-        if (!pGrid.getOceanGrid().get(loc).equals("HIT"))
-              won = false;
-      }
-    }
-    return won;
-  }
-  
+  /* commented out the main method because just for testing
   public static void main(String[] args) {
    PlayBattleship game = new PlayBattleship();
    Ship boatyboatface = new Ship("Submarine", "Vertical", "C4");
@@ -295,6 +277,6 @@ public class PlayBattleship {
    
    System.out.print("Computer is playing: ");
    game.computerTurn();
-   
   }
+  */
 }
