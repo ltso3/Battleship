@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Grid {
   
-  //Initialize private instance variables
+  //Instance variables
   private Hashtable<String, String> targetGrid;
   private Hashtable<String, String> oceanGrid; 
   private String[] shipTypes;
@@ -10,7 +10,7 @@ public class Grid {
   private static final int NUM_SHIPS = 5;
   
   public Grid() {
-    // Assign private instance variables
+    // Initialize private instance variables
     targetGrid = new Hashtable<String, String>();
     oceanGrid = new Hashtable<String, String>();
     shipTypes = new String[NUM_SHIPS];
@@ -39,6 +39,7 @@ public class Grid {
   /* 
    * Places ship on player's oceanGrid based on start coordinate and orientation
    * @param ship to be placed 
+   * @throw IllegalArgumentException is ship has a start point that puts it out of bounds of the board
    */
   public void addShip(Ship ship) {
     
@@ -196,7 +197,7 @@ public class Grid {
    public boolean isSunk(String loc) {
 	   boolean sunk = true;
 	   String hitShip = "";
-//	   System.out.println("shipLocs: " + shipLocs);
+
 	   // Traverse through ship locations to determine which ship you are on
 	   for (int i = 0; i < NUM_SHIPS; i++) {
 		   for (int j = 0; j < shipLocs.get(i).size(); j++) {
