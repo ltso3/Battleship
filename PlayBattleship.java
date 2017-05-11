@@ -158,6 +158,7 @@ public class PlayBattleship {
 	/**
 	 * Simulates one turn for the computer, firing a missile and informing them if a ship has been sunk
 	 */
+	// Doesn't completely work. Computer sometimes gets stuck shooting in one spot.
 	public boolean computerTurn() { 
 		boolean hit = false;
 		boolean fired = false;

@@ -201,10 +201,6 @@ public class PlayPanel extends JPanel {
       int column = (int) loc.charAt(0) - 64;
       System.out.println(game.getCGrid().getShipLocs());
       
- 
-      
-      
-      
       // Player goes first
       //If player's missile is a hit,
       if(game.playerTurn(loc)) {
@@ -221,7 +217,7 @@ public class PlayPanel extends JPanel {
       }     
       
       System.out.println("counter: " + counter);
-      if (counter == 5) {
+      if (counter == 5) { // Popup doesn't work
         System.out.println("HERE");
         frame.getContentPane().removeAll();
         b.frame.getContentPane().removeAll();
@@ -242,7 +238,7 @@ public class PlayPanel extends JPanel {
         frame.getContentPane().add(cm);
         ogpButtons[Integer.parseInt(game.getCCoord().substring(1))][(int) game.getCCoord().charAt(0) - 64].setIcon(new ImageIcon("white.png"));
       }
-      if (game.computerWin()) {
+      if (game.computerWin()) { // Popup doesn't work
         System.out.println("down HERE");
         frame.getContentPane().removeAll();
         b.frame.getContentPane().removeAll();
