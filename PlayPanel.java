@@ -107,13 +107,27 @@ public class PlayPanel extends JPanel {
       }
     }
     
-    grids.add(ogp); 
+    grids.add(ogp);
     
-    for(LinkedList<String> locs : game.getPGrid().getShipLocs()) {
-      for(String loc : locs) {
-        int row = Integer.parseInt(loc.substring(1));
-        int column = (int) loc.charAt(0) - 64;
+    for (int s = 0; s<game.getPGrid().getShipLocs().size(); s++) {
+      for (String location : game.getPGrid().getShipLocs().get(s)) {
+        int row = Integer.parseInt(location.substring(1));
+        int column = (int) location.charAt(0) - 64;
+        if (s == 0) {
+        ogpButtons[row][column].setIcon(new ImageIcon("destroyer1_v.png"));
+        }
+        if (s == 1) {
+        ogpButtons[row][column].setIcon(new ImageIcon("submarine1_v.png"));
+        }
+        if (s == 2) {
+          ogpButtons[row][column].setIcon(new ImageIcon("cruiser1_v.png"));
+        }
+        if (s == 3) {
+        ogpButtons[row][column].setIcon(new ImageIcon("battleship1_v.png"));
+        }
+        if (s == 4) {
         ogpButtons[row][column].setIcon(new ImageIcon("carrier1_v.png"));
+        }
       }
     }
     
@@ -191,5 +205,3 @@ public class PlayPanel extends JPanel {
     }
   }
 }
-
-
