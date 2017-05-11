@@ -1,3 +1,8 @@
+// CS 230 Final Project
+// Riann, Lauren, Kalau
+// Class creates popup inform player that they have won
+// Class written by Kalau
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

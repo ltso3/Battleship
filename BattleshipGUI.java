@@ -1,3 +1,8 @@
+// CS 230 Final Project
+// Riann, Lauren, Kalau
+// Class creates main frame for GUIs
+// Class written by Lauren
+
 import javax.swing.*;
 
 public class BattleshipGUI {
@@ -18,31 +23,7 @@ public class BattleshipGUI {
     
     wp = new WelcomePanel(game);
     frame.getContentPane().add(wp);
-    
-//      asp = new AddShipsPanel(game, this);
-//      frame.getContentPane().add(asp);
-    
-//    OceanGridPanel ogp = new OceanGridPanel(game);
-//    frame.getContentPane().add(ogp);
-    
-//    SetupPanel sp = new SetupPanel();
-//    frame.getContentPane().add(sp);
-// 
-//  InstructionTab it = new InstructionTab();
-//  frame.getContentPane().add(it);
-// 
-//  WinnerPopup wp = new WinnerPopup();
-//  frame.getContentPane().add(wp);
-    
-//  LoserPopup lp = new LoserPopup();
-//  frame.getContentPane().add(lp);
-    
-//  HitPopup hp = new HitPopup();
-//  frame.getContentPane().add(hp);
-    
-//  MissPopup mp = new MissPopup();
-//  frame.getContentPane().add(mp);
-    
+
     frame.pack();
     frame.setVisible(true);
   }

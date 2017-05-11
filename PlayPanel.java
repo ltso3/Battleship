@@ -1,3 +1,8 @@
+// CS 230 Final Project
+// Riann, Lauren, Kalau
+// Class creates panel with targetGrid, oceanGrid and GUI to fireMissile
+// Class written by Lauren
+
 import javax.swing.*;
 import java.util.*;
 import java.awt.*;
@@ -212,8 +217,6 @@ public class PlayPanel extends JPanel {
       }
       
       else {
-        MissPopup mp = new MissPopup(frame, fireCoord.getText(), game);
-        frame.getContentPane().add(mp);
         tgpButtons[row][column].setIcon(new ImageIcon("white.png"));
       }     
       
@@ -255,5 +258,3 @@ public class PlayPanel extends JPanel {
     }
   }
 }
-
-

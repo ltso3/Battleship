@@ -1,3 +1,8 @@
+// CS 230 Final Project
+// Riann, Lauren, Kalau
+// Class creates panel informing player that computer has hit them
+// Class written by Kalau
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

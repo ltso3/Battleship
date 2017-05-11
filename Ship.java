@@ -1,3 +1,8 @@
+// CS 230 Final Project
+// Riann, Lauren, Kalau
+// Class to create Ship objects
+// Class written by Lauren
+
 public class Ship {
   
   // Initialize private instance variables

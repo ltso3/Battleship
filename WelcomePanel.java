@@ -1,3 +1,8 @@
+// CS 230 Final Project
+// Riann, Lauren, Kalau
+// Class creates panel with title of game and a start button
+// Class written by Lauren
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

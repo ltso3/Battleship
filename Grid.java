@@ -1,3 +1,8 @@
+// CS 230 Final Project
+// Riann, Lauren, Kalau
+// Class creates Grid which is used to store ship locations and hits/misses
+// Class written by Riann
+
 import java.util.*;
 
 public class Grid {
@@ -52,9 +57,6 @@ public class Grid {
       oceanGrid.put(loc, ship.getName());
       shipLocs.get(indexOfShip(ship.getName())).add(loc);
     }
-    
-    // System.out.println(Arrays.toString(shipTypes));
-    // System.out.println(shipLocs);
   }
   
   /* 
@@ -195,7 +197,6 @@ public class Grid {
    public boolean isSunk(String loc) {
     boolean sunk = true;
     String hitShip = "";
-    System.out.println("shipLocs: " + shipLocs);
     // Traverse through ship locations to determine which ship you are on
     for (int i = 0; i < NUM_SHIPS; i++) {
      for (int j = 0; j < shipLocs.get(i).size(); j++) {
@@ -208,10 +209,8 @@ public class Grid {
     if (hitShip.equals(""))
      return false;
     int hitShipIndex = indexOfShip(hitShip); 
-    System.out.println("oceanGrid: " + oceanGrid);
     for (int i = 0; i < shipLocs.get(hitShipIndex).size(); i++) {
      String locKey = (shipLocs.get(hitShipIndex).get(i));
-     System.out.println("isHit: " + oceanGrid.get(locKey).equals("HIT"));
      if (!oceanGrid.get(locKey).equals("HIT")) { 
        sunk = false;
        i = shipLocs.get(hitShipIndex).size(); // If any location on the ship has not been hit, the ship is not sunk so we can early exit loop

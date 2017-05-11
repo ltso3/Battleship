@@ -1,3 +1,8 @@
+// CS 230 Final Project
+// Riann, Lauren, Kalau
+// Class creates panel to add Ships to grid
+// Class written by Riann
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

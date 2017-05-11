@@ -1,3 +1,8 @@
+// CS 230 Final Project
+// Riann, Lauren, Kalau
+// Class creates popup panel with instructions on how to play game
+// Class written by Kalau
+
 /** InstructionTab.java
   * Created by: Riann, Lauren, Kalau
   * CS 230 Final Project
