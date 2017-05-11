@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Grid {
   
-  //Instance variables
+  //Initialize private instance variables
   private Hashtable<String, String> targetGrid;
   private Hashtable<String, String> oceanGrid; 
   private String[] shipTypes;
@@ -10,7 +10,7 @@ public class Grid {
   private static final int NUM_SHIPS = 5;
   
   public Grid() {
-    // Initialize private instance variables
+    // Assign private instance variables
     targetGrid = new Hashtable<String, String>();
     oceanGrid = new Hashtable<String, String>();
     shipTypes = new String[NUM_SHIPS];
@@ -39,7 +39,6 @@ public class Grid {
   /* 
    * Places ship on player's oceanGrid based on start coordinate and orientation
    * @param ship to be placed 
-   * @throw IllegalArgumentException is ship has a start point that puts it out of bounds of the board
    */
   public void addShip(Ship ship) {
     
@@ -77,7 +76,7 @@ public class Grid {
     if (hasShip(loc))
         oceanGrid.put(loc, "HIT");
     else
-    	oceanGrid.put(loc, "MISS");
+     oceanGrid.put(loc, "MISS");
   }
   
   /**
@@ -130,7 +129,7 @@ public class Grid {
   
   public boolean hasShip(String loc) {
     return oceanGrid.get(loc).equals("HIT") || oceanGrid.get(loc).equals("Carrier") || oceanGrid.get(loc).equals("Battleship") 
-    		|| oceanGrid.get(loc).equals("Destroyer") || oceanGrid.get(loc).equals("Submarine") || oceanGrid.get(loc).equals("Cruiser");
+      || oceanGrid.get(loc).equals("Destroyer") || oceanGrid.get(loc).equals("Submarine") || oceanGrid.get(loc).equals("Cruiser");
   }
   
   /*
@@ -193,32 +192,32 @@ public class Grid {
    * @param loc String denoting location where missile was shot
    * @return true if the ship at location has been sunk, false otherwise
    */
-  
    public boolean isSunk(String loc) {
-	   boolean sunk = true;
-	   String hitShip = "";
+    boolean sunk = true;
+    String hitShip = "";
+    System.out.println("shipLocs: " + shipLocs);
+    // Traverse through ship locations to determine which ship you are on
+    for (int i = 0; i < NUM_SHIPS; i++) {
+     for (int j = 0; j < shipLocs.get(i).size(); j++) {
+      if (shipLocs.get(i).get(j).equals(loc)) 
+       hitShip = shipTypes[i]; 
+     }
+    }
 
-	   // Traverse through ship locations to determine which ship you are on
-	   for (int i = 0; i < NUM_SHIPS; i++) {
-		   for (int j = 0; j < shipLocs.get(i).size(); j++) {
-			   if (shipLocs.get(i).get(j).equals(loc)) 
-				   hitShip = shipTypes[i]; 
-		   }
-	   }
-
-       // Break out of the loop if the ship is not hit
-	   if (hitShip.equals(""))
-		   return false;
-	   int hitShipIndex = indexOfShip(hitShip);	
-
-	   for (int i = 0; i < shipLocs.get(hitShipIndex).size(); i++) {
-		   String locKey = (shipLocs.get(hitShipIndex).get(i));
-		   if (!oceanGrid.get(locKey).equals("HIT")) { 
-			   sunk = false;
-			   i = shipLocs.get(hitShipIndex).size(); // If any location on the ship has not been hit, the ship is not sunk so we can early exit loop
-		   }
-	   }
-	   return sunk;
+    // Break out of the loop if the ship is not hit
+    if (hitShip.equals(""))
+     return false;
+    int hitShipIndex = indexOfShip(hitShip); 
+    System.out.println("oceanGrid: " + oceanGrid);
+    for (int i = 0; i < shipLocs.get(hitShipIndex).size(); i++) {
+     String locKey = (shipLocs.get(hitShipIndex).get(i));
+     System.out.println("isHit: " + oceanGrid.get(locKey).equals("HIT"));
+     if (!oceanGrid.get(locKey).equals("HIT")) { 
+       sunk = false;
+       i = shipLocs.get(hitShipIndex).size(); // If any location on the ship has not been hit, the ship is not sunk so we can early exit loop
+     }
+    }
+    return sunk;
    }
    
   
@@ -230,7 +229,7 @@ public class Grid {
     boolean won = true;
     for (LinkedList<String> locs: shipLocs) {
       for(String loc : locs) {
-        if (!locs.isEmpty() && !oceanGrid.get(loc).equals("HIT"))
+        if (!oceanGrid.get(loc).equals("HIT"))
               won = false;
       }
     }
