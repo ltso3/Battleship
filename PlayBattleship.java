@@ -33,8 +33,8 @@ public class PlayBattleship {
     for (Ship ship: cShips) {
         Random rand1 = new Random();
         int randNum = rand1.nextInt(10);
-    	if (randNum/2 != 0)
-    		ship.setOrientation("Horizontal");
+     if (randNum/2 != 0)
+      ship.setOrientation("Horizontal");
     }
 
     // Randomize starting coordinates and add ships
@@ -43,15 +43,15 @@ public class PlayBattleship {
         int let = rand2.nextInt(10) + 65;
         int num = rand2.nextInt(10) + 1;
         String loc = (char)(let) + Integer.toString(num);
-    	ship.setStartCoord(loc);
-    	
-    	while (!cGrid.isOpenSpot(loc) || !cGrid.isValidStart(ship)) {
-	    	let = rand2.nextInt(10) + 65;
-	        num = rand2.nextInt(10) + 1;
-	        loc = (char)(let) + Integer.toString(num);
-	        ship.setStartCoord(loc);
-    	}
-    	cGrid.addShip(ship);
+     ship.setStartCoord(loc);
+     
+     while (!cGrid.isOpenSpot(loc) || !cGrid.isValidStart(ship)) {
+      let = rand2.nextInt(10) + 65;
+         num = rand2.nextInt(10) + 1;
+         loc = (char)(let) + Integer.toString(num);
+         ship.setStartCoord(loc);
+     }
+     cGrid.addShip(ship);
     }
   }
   
@@ -74,8 +74,8 @@ public class PlayBattleship {
    * @param loc String denoting location to fire missile at
    */
   public boolean playerTurn(String loc) {
-	boolean hit;
-	
+ boolean hit;
+ 
     if (cGrid.hasShip(loc)) 
       System.out.println("HIT at " + loc);
     else
@@ -95,12 +95,12 @@ public class PlayBattleship {
    * @return location adjacent to current location on the left
    */
   private String getLeftAdjacent(String current) {
-	  String s = "";
-	  char column = current.charAt(0);
-	  String row = current.substring(1);
-	  column = (char) (column-1);
-	  if (cGrid.getTargetGrid().containsKey(column + row)) // Check that adjacent location is actually a valid spot on grid
-		  s = column+row;
+   String s = "";
+   char column = current.charAt(0);
+   String row = current.substring(1);
+   column = (char) (column-1);
+   if (cGrid.getTargetGrid().containsKey(column + row)) // Check that adjacent location is actually a valid spot on grid
+    s = column+row;
       return s;
   }
   
@@ -110,13 +110,13 @@ public class PlayBattleship {
    * @return location adjacent to current location on the right
    */
   private String getRightAdjacent(String current) {
-	  String s = "";
-	  char column = current.charAt(0);
-	  String row = current.substring(1);
-	  column = (char) (column+1);
-	  if (cGrid.getTargetGrid().containsKey(column + row)) // Check that adjacent location is actually a valid spot on grid
-		  s = column+row;
-	  return s;
+   String s = "";
+   char column = current.charAt(0);
+   String row = current.substring(1);
+   column = (char) (column+1);
+   if (cGrid.getTargetGrid().containsKey(column + row)) // Check that adjacent location is actually a valid spot on grid
+    s = column+row;
+   return s;
   }
  
   /**
@@ -125,13 +125,13 @@ public class PlayBattleship {
    * @return location adjacent to current location on the north
    */
   private String getNorthAdjacent(String current) {
-	 String s = "";
-	 char column = current.charAt(0);
-	 String row = current.substring(1);
-	 row = Integer.toString(Integer.parseInt(row)-1);
-	  if (cGrid.getTargetGrid().containsKey(column + row)) // Check that adjacent location is actually a valid spot on grid
-		  s = column+row;
-	 return s;
+  String s = "";
+  char column = current.charAt(0);
+  String row = current.substring(1);
+  row = Integer.toString(Integer.parseInt(row)-1);
+   if (cGrid.getTargetGrid().containsKey(column + row)) // Check that adjacent location is actually a valid spot on grid
+    s = column+row;
+  return s;
   }
   
   /**
@@ -140,129 +140,143 @@ public class PlayBattleship {
    * @return location adjacent to current location on the south
    */
   private String getSouthAdjacent(String current) {
-	  String s = "";
-	  char column = current.charAt(0);
-	  String row = current.substring(1);
-	  row = Integer.toString(Integer.parseInt(row)+1);
-	  if (cGrid.getTargetGrid().containsKey(column + row)) // Check that adjacent location is actually a valid spot on grid
-		  s = column+row;
-	  return s;
+   String s = "";
+   char column = current.charAt(0);
+   String row = current.substring(1);
+   row = Integer.toString(Integer.parseInt(row)+1);
+   if (cGrid.getTargetGrid().containsKey(column + row)) // Check that adjacent location is actually a valid spot on grid
+    s = column+row;
+   return s;
   }
  
   /**
    * Simulates one turn for the computer, firing a missile and informing them if a ship has been sunk
+   * @return boolean hit
    */
   public boolean computerTurn() { 
-	boolean hit = false;
-	boolean fired = false;
+ boolean hit = false;
+ boolean fired = false;
 
-	Enumeration<String> keys = cGrid.getTargetGrid().keys();
-	while (keys.hasMoreElements() && !fired) {
-		String adj = "";
-		String loc = keys.nextElement();
-		
-		if (cGrid.getTargetGrid().get(loc).equals("HIT")) {
-			String right = getRightAdjacent(loc);
-			String left = getLeftAdjacent(loc);
-			String south = getSouthAdjacent(loc);
-		    String north = getNorthAdjacent(loc);
-			 
-			if (cGrid.getTargetGrid().get(right).equals("Empty"))
-				adj = right;
-			else if (cGrid.getTargetGrid().get(south).equals("Empty"))
-				adj = south;
-			else if (cGrid.getTargetGrid().get(left).equals("Empty"))
-				adj = left;
-			else if (cGrid.getTargetGrid().get(north).equals("Empty"))
-				adj = north;
-		}
+ Enumeration<String> keys = cGrid.getTargetGrid().keys();
+ while (keys.hasMoreElements() && !fired) {
+  String adj = "";
+  String loc = keys.nextElement();
+  
+  if (cGrid.getTargetGrid().get(loc).equals("HIT")) {
+   String right = getRightAdjacent(loc);
+   String left = getLeftAdjacent(loc);
+   String south = getSouthAdjacent(loc);
+      String north = getNorthAdjacent(loc);
+    
+   if (cGrid.getTargetGrid().get(right).equals("Empty"))
+    adj = right;
+   else if (cGrid.getTargetGrid().get(south).equals("Empty"))
+    adj = south;
+   else if (cGrid.getTargetGrid().get(left).equals("Empty"))
+    adj = left;
+   else if (cGrid.getTargetGrid().get(north).equals("Empty"))
+    adj = north;
+  }
 
-		if (!adj.equals("")) {
-		    if (pGrid.hasShip(adj)) 
-		        System.out.println("HIT at " + adj);
-		      else
-		        System.out.println("MISS at " + adj);
-		      
-		      cCoord = adj;
-		      hit = fireMissile(adj, cGrid, pGrid);
-		      fired = true;
-		      
-		      if (pGrid.isSunk(loc))
-		        System.out.println("The computer has sunk one of your ships");
-		}	
-	}
-	
-	// Shoot at a random location if there is no better option to shoot at
+  if (!adj.equals("")) {
+      if (pGrid.hasShip(adj)) 
+          System.out.println("HIT at " + adj);
+        else
+          System.out.println("MISS at " + adj);
+        
+        cCoord = adj;
+        hit = fireMissile(adj, cGrid, pGrid);
+        fired = true;
+        
+        if (pGrid.isSunk(loc))
+          System.out.println("The computer has sunk one of your ships");
+  } 
+ }
+ 
+ // Shoot at a random location if there is no better option to shoot at
     if (fired == false) { 
-    	System.out.println("Going random");
-	    String loc;
-	    Random rand = new Random(); 
-	    int let = rand.nextInt(10) + 65;
-	    int num = rand.nextInt(10) + 1;
-	    loc = (char)(let) + Integer.toString(num);
-	
-	    // Make sure the location can be shot at before firing missile
-	    while (!cGrid.isOpenSpot(loc)) {
-	      let = rand.nextInt((74 - 65) + 1) + 65;
-	      num = rand.nextInt(10) + 1;
-	      loc = (char)(let) + Integer.toString(num);
-	      System.out.println(loc);
-	    }
-	
-	    cCoord = loc; 
-	    
-	    if (pGrid.hasShip(loc)) 
-	      System.out.println("HIT at " + loc);
-	    else
-	      System.out.println("MISS at " + loc);
-	    
-	    hit = fireMissile(loc, cGrid, pGrid);
-	    
-	    if (pGrid.isSunk(loc))
-	      System.out.println("The computer has sunk one of your ships");
-  	 }
+     System.out.println("Going random");
+     String loc;
+     Random rand = new Random(); 
+     int let = rand.nextInt(10) + 65;
+     int num = rand.nextInt(10) + 1;
+     loc = (char)(let) + Integer.toString(num);
+ 
+     // Make sure the location can be shot at before firing missile
+     while (!cGrid.isOpenSpot(loc)) {
+       let = rand.nextInt((74 - 65) + 1) + 65;
+       num = rand.nextInt(10) + 1;
+       loc = (char)(let) + Integer.toString(num);
+       System.out.println(loc);
+     }
+ 
+     cCoord = loc; 
+     
+     if (pGrid.hasShip(loc)) 
+       System.out.println("HIT at " + loc);
+     else
+       System.out.println("MISS at " + loc);
+     
+     hit = fireMissile(loc, cGrid, pGrid);
+     
+     if (pGrid.isSunk(loc))
+       System.out.println("The computer has sunk one of your ships");
+    }
     return hit;
   }
   
+  /**
+   * Getter method to get coordinate of missile fired by computer
+   * @return cCoord (location of computer's fired missile)
+   */
   public String getCCoord() {
-	  return cCoord;
+   return cCoord;
   }
   
+  /**
+   * Getter method to get player's grid
+   * @return pGrid (player's grid)
+   */
   public Grid getPGrid() {
     return pGrid;
   }
   
+  /**
+   * Getter method to get computer's grid 
+   * @return cGrid (computer's grid)
+   */
   public Grid getCGrid() {
     return cGrid;
   }
   
+  /* commented out the main method because just for testing
   public static void main(String[] args) {
-	  PlayBattleship game = new PlayBattleship();
-	  Ship boatyboatface = new Ship("Submarine", "Vertical", "C4");
-	  game.pGrid.addShip(boatyboatface);
-	  
-	  game.fireMissile("C5", game.cGrid, game.pGrid);
-	  
-	  System.out.print("Computer is playing: ");
-	  game.computerTurn();
-	  
-	  System.out.print("Computer is playing: ");
-	  game.computerTurn();
-	  
-	  System.out.print("Computer is playing: ");
-	  game.computerTurn();
-	  
-	  System.out.print("Computer is playing: ");
-	  game.computerTurn();
-	  
-	  System.out.print("Computer is playing: ");
-	  game.computerTurn();
-	  
-	  System.out.print("Computer is playing: ");
-	  game.computerTurn();
-	  
-	  System.out.print("Computer is playing: ");
-	  game.computerTurn();
-	  
+   PlayBattleship game = new PlayBattleship();
+   Ship boatyboatface = new Ship("Submarine", "Vertical", "C4");
+   game.pGrid.addShip(boatyboatface);
+   
+   game.fireMissile("C5", game.cGrid, game.pGrid);
+   
+   System.out.print("Computer is playing: ");
+   game.computerTurn();
+   
+   System.out.print("Computer is playing: ");
+   game.computerTurn();
+   
+   System.out.print("Computer is playing: ");
+   game.computerTurn();
+   
+   System.out.print("Computer is playing: ");
+   game.computerTurn();
+   
+   System.out.print("Computer is playing: ");
+   game.computerTurn();
+   
+   System.out.print("Computer is playing: ");
+   game.computerTurn();
+   
+   System.out.print("Computer is playing: ");
+   game.computerTurn();
+   */
   }
 }
