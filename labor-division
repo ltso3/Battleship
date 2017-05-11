@@ -1,0 +1,18 @@
+Although everyone worked on every piece, these are the pieces that we spent the most time on
+Riann:
+Grid.java
+PlayBattleship.java
+AddShipsPanel.java
+LoserPopup.java
+
+Kalau:
+InstructionTab.java
+ComputerHit.java
+ComputerMiss.java
+WinnerPopup.java
+
+Lauren:
+Ship.java
+PlayPanel.java
+BattleshipGUI.java
+WelcomePanel.java
