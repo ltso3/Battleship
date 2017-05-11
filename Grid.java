@@ -61,8 +61,8 @@ public class Grid {
    * Marks location on targetGrid with corresponding message
    * @param location String denoting location to hit 
    */
-  public void markTargetGrid(String location) {
-    if (oceanGrid.get(location).equals("Empty")) 
+  public void markTargetGrid(Grid oppGrid, String location) {
+    if (oppGrid.oceanGrid.get(location).equals("Empty")) 
       targetGrid.put(location, "MISS");
     else 
       targetGrid.put(location, "HIT");
@@ -119,8 +119,8 @@ public class Grid {
    */
   public int indexOfShip(String name) {
     // Traverses through shipTypes to find index of given name
-    for(int i = 0; i < NUM_SHIPS; i++) {
-      if(shipTypes[i].equals(name)) {
+    for (int i = 0; i < NUM_SHIPS; i++) {
+      if (shipTypes[i].equals(name)) {
         return i;
       }
     }
@@ -192,20 +192,34 @@ public class Grid {
    * @param loc String denoting location where missile was shot
    * @return true if the ship at location has been sunk, false otherwise
    */
-  /*  private boolean isSunk(Grid grid, String loc) {
-   boolean sunk = true;
-   String hitShip = grid.getShipLocs().get(loc);
-   int hitShipIndex = grid.indexOfShip(hitShip);
-   for (int i = 0; i < grid.getShipLocs().get(hitShipIndex).size(); i++) {
-   String locKey = (grid.getShipLocs().get(hitShipIndex).get(i));
-   if (!grid.getOceanGrid().get(locKey).equals("HIT")) { 
-   sunk = false;
-   i = grid.getShipLocs().get(hitShipIndex).size(); // If any location on the ship has not been hit, the ship is not sunk so we can early exit loop
+  
+   public boolean isSunk(String loc) {
+	   boolean sunk = true;
+	   String hitShip = "";
+//	   System.out.println("shipLocs: " + shipLocs);
+	   // Traverse through ship locations to determine which ship you are on
+	   for (int i = 0; i < NUM_SHIPS; i++) {
+		   for (int j = 0; j < shipLocs.get(i).size(); j++) {
+			   if (shipLocs.get(i).get(j).equals(loc)) 
+				   hitShip = shipTypes[i]; 
+		   }
+	   }
+
+       // Break out of the loop if the ship is not hit
+	   if (hitShip.equals(""))
+		   return false;
+	   int hitShipIndex = indexOfShip(hitShip);	
+
+	   for (int i = 0; i < shipLocs.get(hitShipIndex).size(); i++) {
+		   String locKey = (shipLocs.get(hitShipIndex).get(i));
+		   if (!oceanGrid.get(locKey).equals("HIT")) { 
+			   sunk = false;
+			   i = shipLocs.get(hitShipIndex).size(); // If any location on the ship has not been hit, the ship is not sunk so we can early exit loop
+		   }
+	   }
+	   return sunk;
    }
-   }
-   return sunk;
-   }
-   */
+   
   
   /**
    * Determine whether all ships are sunk and the game is over
@@ -227,15 +241,16 @@ public class Grid {
 //    System.out.println("Target: " + grid.getTargetGrid());
 //    System.out.println("Ocean: " + grid.getOceanGrid());
     
-/*    Ship ship1 = new Ship("Destroyer", "Vertical", "C4");
+    Ship ship1 = new Ship("Destroyer", "Vertical", "C4");
     Ship ship2 = new Ship("Submarine", "Horizontal", "C3");
     Ship ship3 = new Ship("Battleship", "Vertical", "A3");
     Ship ship4 = new Ship("Cruiser", "Horizontal", "C2");
+    Ship ship5 = new Ship("Carrier", "Horizontal", "C7");
     
     grid.addShip(ship1);
     System.out.println("Checking if C4 has a ship (Destroyer): " + grid.oceanGrid.get("C4"));
     System.out.println("Checking if C5 has a ship (Destroyer): " + grid.oceanGrid.get("C5"));
-    grid.markTargetGrid("C4");
+ 
     System.out.println("Checking if C4 has been hit (HIT): " + grid.targetGrid.get("C4"));
     System.out.println("Checking if A4 has been targeted (Empty): " + grid.targetGrid.get("A4"));
     
@@ -251,6 +266,6 @@ public class Grid {
     grid.addShip(ship4);
     
     System.out.println(grid.getShipLocs());
-    System.out.println(grid.getShipTypes());*/
+    System.out.println(grid.getShipTypes());
   }
 }
