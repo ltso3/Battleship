@@ -14,7 +14,7 @@ public class WelcomePanel extends JPanel {
   BattleshipGUI b;
   
   public WelcomePanel(PlayBattleship game) {
-//    playAudio();
+    playAudio();
     
     this.game = game;
     b = new BattleshipGUI();
@@ -22,10 +22,11 @@ public class WelcomePanel extends JPanel {
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Sets panel layout to BoxLayout vertically
     JPanel coverPic = new JPanel();
     coverPic.setBackground(new Color(197, 204, 208));
-    JLabel cover = new JLabel(new ImageIcon("battleshipCover.png"));
+    JLabel cover = new JLabel(new ImageIcon("battleshipCover.png")); // Set photo for panel
     coverPic.add(cover);
     add(coverPic);
     
+    // Create and edit start button
     JPanel button = new JPanel();
     start = new JButton("Start");
     start.setPreferredSize(new Dimension(100,50));
@@ -40,7 +41,8 @@ public class WelcomePanel extends JPanel {
   }
   
   private class ButtonListener implements ActionListener {
-    public void actionPerformed (ActionEvent event) {      
+    public void actionPerformed (ActionEvent event) {   
+      // Close WelcomePanel and open AddShipsPanel
       b.wp.invalidate();
       b.wp.setVisible(false);
       b.wp.removeAll();
@@ -51,6 +53,9 @@ public class WelcomePanel extends JPanel {
     }
   }
   
+  /**
+   * Plays audio for background music
+   */
   private void playAudio() {
     try {
       File soundFile = new File("GameOfThrones.wav");
