@@ -196,20 +196,9 @@ public class PlayPanel extends JPanel {
       int column = (int) loc.charAt(0) - 64;
       System.out.println(game.getCGrid().getShipLocs());
       
-      System.out.println(counter);
-      System.out.println(counter == 5);
-      if (counter == 5) {
-        System.out.println("HERE");
-        WinnerPopup wp = new WinnerPopup();
-        frame.getContentPane().removeAll();
-        frame.getContentPane().add(wp);
-      }
+ 
       
-      if (game.computerWin()) {
-        LoserPopup lp = new LoserPopup();
-        frame.getContentPane().removeAll();
-        frame.getContentPane().add(lp);
-      }
+      
       
       // Player goes first
       //If player's missile is a hit,
@@ -226,7 +215,17 @@ public class PlayPanel extends JPanel {
         MissPopup mp = new MissPopup(frame, fireCoord.getText(), game);
         frame.getContentPane().add(mp);
         tgpButtons[row][column].setIcon(new ImageIcon("white.png"));
-      }           
+      }     
+      
+      System.out.println("counter: " + counter);
+      if (counter == 5) {
+        System.out.println("HERE");
+        frame.getContentPane().removeAll();
+        b.frame.getContentPane().removeAll();
+        b.asp = null;
+        b.frame.getContentPane().add(new WinnerPopup(game, b));
+        b.frame.setVisible(true);
+      }
       
       if(game.computerTurn()) {
         ComputerHit ch = new ComputerHit(frame, game.getCCoord());
@@ -239,6 +238,14 @@ public class PlayPanel extends JPanel {
         frame.getContentPane().removeAll();
         frame.getContentPane().add(cm);
         ogpButtons[Integer.parseInt(game.getCCoord().substring(1))][(int) game.getCCoord().charAt(0) - 64].setIcon(new ImageIcon("white.png"));
+      }
+      if (game.computerWin()) {
+        System.out.println("down HERE");
+        frame.getContentPane().removeAll();
+        b.frame.getContentPane().removeAll();
+        b.asp = null;
+        b.frame.getContentPane().add(new LoserPopup());
+        b.frame.setVisible(true);
       }
       
 //      }

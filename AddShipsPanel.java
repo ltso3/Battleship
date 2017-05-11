@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class AddShipsPanel extends JPanel {
-  // Instance variables
+  
   private JPanel upperText1, upperText2, upperText3, add, done, lowerText,
                  destroyer, sub, cruiser, battleship, carrier;
   private JComboBox shipCombo, orientationCombo, shipCombo1, orientationCombo1, shipCombo2, orientationCombo2, 
@@ -54,7 +54,6 @@ public class AddShipsPanel extends JPanel {
     lowerText.add(l4);
     newShip = new JLabel("");
     
-    // Create and style JPanels for each ship
     destroyer = new JPanel();
     sub = new JPanel();
     cruiser = new JPanel();
