@@ -113,7 +113,7 @@ public class PlayPanel extends JPanel {
       for(String loc : locs) {
         int row = Integer.parseInt(loc.substring(1));
         int column = (int) loc.charAt(0) - 64;
-        ogpButtons[row][column].setBackground(new Color(96, 96, 96));
+        ogpButtons[row][column].setIcon(new ImageIcon("carrier1_v.png"));
       }
     }
     
@@ -155,21 +155,38 @@ public class PlayPanel extends JPanel {
   
   private class FireButtonListener implements ActionListener {
     public void actionPerformed (ActionEvent event) { 
+      JFrame frame = new JFrame ("BATTLESHIP"); // Create JFrame for overall structure of GUI
+      frame.setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE); // Close GUI upon pressing x
+      
       String loc = fireCoord.getText();
       game.playerTurn(loc);
       int row = Integer.parseInt(loc.substring(1));
       int column = (int) loc.charAt(0) - 64;
-      LinkedList<Integer> temp = new LinkedList<Integer>();
-      temp.add(row);
-      temp.add(column);
       
-      if(game.fireMissile(loc, game.getPGrid(), game.getCGrid()))
-        tgpButtons[row][column].setIcon(new ImageIcon("red.png"));
-      else 
-        tgpButtons[row][column].setIcon(new ImageIcon("white.png"));
-      
-      //invalidate();
-//      repaint();
+      if(!game.getPGrid().allSunk() && !game.getCGrid().allSunk()) {
+        if(game.playerTurn(loc)) {
+          HitPopup hp = new HitPopup(frame, fireCoord.getText(), game);
+          frame.getContentPane().add(hp);
+          tgpButtons[row][column].setIcon(new ImageIcon("red.gif"));          
+        }
+        else {
+          MissPopup mp = new MissPopup(frame, fireCoord.getText(), game);
+          frame.getContentPane().add(mp);
+          tgpButtons[row][column].setIcon(new ImageIcon("white.png"));
+        }
+        if(game.computerTurn()) {
+//          ComputerHit ch = new ComputerHit(frame, game.getCCoord());
+//          frame.getContentPane().add(ch);
+          ogpButtons[Integer.parseInt(game.getCCoord().substring(1))][(int) game.getCCoord().charAt(0) - 64].setIcon(new ImageIcon("red.gif"));
+        }
+        else {
+//          ComputerMiss cm = new ComputerMiss(frame, game.getCCoord());
+//          frame.getContentPane().add(cm);
+          ogpButtons[Integer.parseInt(game.getCCoord().substring(1))][(int) game.getCCoord().charAt(0) - 64].setIcon(new ImageIcon("white.png"));
+        }
+      }
+      frame.pack();
+      frame.setVisible(true);
       tgp.revalidate();
     }
   }

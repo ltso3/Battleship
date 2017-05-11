@@ -5,6 +5,8 @@ public class PlayBattleship {
   // Initialize private instance variables
   private Grid pGrid;
   private Grid cGrid;
+  private boolean isPlayerTurn;
+  private String cCoord;
   
   /**
    * Constructor which initializes player Grids and also sets up ships on cGrid
@@ -13,6 +15,8 @@ public class PlayBattleship {
     // Assign instance variables
     pGrid = new Grid();
     cGrid = new Grid();
+    isPlayerTurn = true;
+    cCoord = "";
     
     // Create ships to be added to cGrid
     Ship[] cShips = new Ship[5];
@@ -31,8 +35,8 @@ public class PlayBattleship {
     for (Ship ship: cShips) {
         Random rand1 = new Random();
         int randNum = rand1.nextInt(10);
-    	if (randNum/2 != 0)
-    		ship.setOrientation("Horizontal");
+     if (randNum/2 != 0)
+      ship.setOrientation("Horizontal");
     }
 
     // Randomize starting coordinates and add ships
@@ -41,15 +45,15 @@ public class PlayBattleship {
         int let = rand2.nextInt(10) + 65;
         int num = rand2.nextInt(10) + 1;
         String loc = (char)(let) + Integer.toString(num);
-    	ship.setStartCoord(loc);
-    	
-    	while (!cGrid.isOpenSpot(loc) || !cGrid.isValidStart(ship)) {
-	    	let = rand2.nextInt(10) + 65;
-	        num = rand2.nextInt(10) + 1;
-	        loc = (char)(let) + Integer.toString(num);
-	        ship.setStartCoord(loc);
-    	}
-    	cGrid.addShip(ship);
+        ship.setStartCoord(loc);
+     
+     while (!cGrid.isOpenSpot(loc) || !cGrid.isValidStart(ship)) {
+      let = rand2.nextInt(10) + 65;
+         num = rand2.nextInt(10) + 1;
+         loc = (char)(let) + Integer.toString(num);
+         ship.setStartCoord(loc);
+     }
+     cGrid.addShip(ship);
     }
   }
   
@@ -71,22 +75,26 @@ public class PlayBattleship {
    * Simulates one turn for the player, firing a missile and informing them if a ship has been sunk
    * @param loc String denoting location to fire missile at
    */
-  public void playerTurn(String loc) {
+  public boolean playerTurn(String loc) {
     if (cGrid.hasShip(loc)) 
       System.out.println("HIT at " + loc);
     else
       System.out.println("MISS at " + loc);
     
-    fireMissile(loc, pGrid, cGrid);
+    return fireMissile(loc, pGrid, cGrid);
     
 //    if (isSunk(cGrid, loc))
 //      System.out.println("You sunk one of the computer's ships");
   }
   
+  public boolean isPlayerTurn() {
+    return isPlayerTurn;
+  }
+  
   /**
    * Simulates one turn for the computer, firing a missile and informing them if a ship has been sunk
    */
-  public void computerTurn() { // Can make this the easy level later and hard will have more focused targeting
+  public boolean computerTurn() { // Can make this the easy level later and hard will have more focused targeting
     
     // Generate a random location for the computer to shoot at
     String loc;
@@ -100,18 +108,22 @@ public class PlayBattleship {
       let = rand.nextInt((74 - 65) + 1) + 65;
       num = rand.nextInt(10) + 1;
       loc = (char)(let) + Integer.toString(num);
-      System.out.println(loc);
+//      System.out.println(loc);
     }
-
+    cCoord = loc;
     if (pGrid.hasShip(loc)) 
       System.out.println("HIT at " + loc);
     else
       System.out.println("MISS at " + loc);
     
-    fireMissile(loc, cGrid, pGrid);
+    return fireMissile(loc, cGrid, pGrid);
     
 //    if (isSunk(pGrid, loc))
 //      System.out.println("The computer has sunk one of your ships");
+  }
+  
+  public String getCCoord() {
+    return cCoord;
   }
   
   public Grid getPGrid() {

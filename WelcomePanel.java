@@ -14,7 +14,7 @@ public class WelcomePanel extends JPanel {
   BattleshipGUI b;
   
   public WelcomePanel(PlayBattleship game) {
-  //  playAudio();
+//    playAudio();
     
     this.game = game;
     b = new BattleshipGUI();
